@@ -1,0 +1,118 @@
+
+
+.home-container {
+    background-color: #F5F5DC;
+}
+
+.header {
+    width: 100%;
+    height: 100vh;
+    margin: 0px auto;
+    overflow: hidden;
+}
+.home-image-container{
+    height:75%;
+    width:1156px;
+    margin: 5px auto;
+    border-radius: 35px;
+    background-image: url("../assets/conver.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.welcome-container {
+    width:1200px;
+    height:450px;
+    margin: 100px auto;
+    position:relative
+}
+.welcome-content-box {
+    width:810px;
+    height:450px;
+    background-color: rgba(245,152,12,0.25);
+    overflow: hidden;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    float: left;
+}
+.welcome-content {
+    width:600px;
+    height:350px;
+    margin-top: 36px;
+    margin-left: 30px;
+ 
+   
+}
+.welcome-container h2 {
+    font-size: 50px;
+    text-align: left;
+    font-family: 'Lily Script One', cursive;
+    color: #F5980C;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+}
+.welcome-container p {
+    text-align: left;
+    font-weight: 400;
+    font-size: 18px;
+}
+.welcome-container p span {
+    padding-left: 1.5em;
+}
+.welcome-container .reserve-button {
+    margin: 10px auto;
+    margin-top: 60px;
+    width: 150px;
+    padding: 15px;
+    background-color: #F5980C;
+    border-radius: 50px;
+}
+.welcome-container .reserve-button span{
+   font-weight: 700;
+}
+
+.welcome-showcase{
+    position:absolute;
+    left:650px ;
+    width: 530px;
+    height: 430px;
+}
+.welcome-showcase-image-1{
+    position:absolute;
+    bottom: 0;
+    left: 0px;
+    width: 320px;
+    height: 380px;
+    border-radius: 16px;
+    background-image: url("../assets/image-1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.welcome-showcase-image-2{
+    position:absolute;
+    top: 0;
+    right: 0px;
+    width: 320px;
+    height: 380px;
+    border-radius: 16px;
+    background-image: url("../assets/image-2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.wrapper-container p {
+ font-size: 35px;
+ font-family: 'Lily Script One', cursive;
+}
+.wrapper-container {
+    margin: 0 90px;
+}
+.wrapper-container .row {
+    
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+.wrapper-container .row > div{
+    
+}
