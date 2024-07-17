@@ -2,7 +2,18 @@
 
 .home-container {
     background-color: #F5F5DC;
-    padding-bottom: 70px;
+}
+.background-box {
+    display:inline;
+    position: absolute;
+    top: 1500px;
+    left: 30px;
+    width: 1300px;
+    height: 630px;
+    border: 10px solid rgba(245,152,12,0.25);
+    border-radius: 35px;
+    rotate: -20.50deg;
+    z-index: 1;
 }
 
 .header {
@@ -147,6 +158,7 @@
 }
 .wrapper-container {
     margin: 0 90px;
+    z-index: 100;
 }
 .wrapper-container .wrapper-title {
  font-size: 35px;
@@ -166,12 +178,13 @@
  }
 
 .wrapper-container .row {
-    
+    position: relative;
     display: flex;
     flex-direction: row;
     gap: 30px;
     justify-content: space-between;
     margin-top: 100px;
+    z-index: 3;
 }
 
 .wrapper-container .discover-button {
@@ -190,6 +203,12 @@
 .contact-container{
     margin:60px auto;
     width: 94%;
-  
+}
+
+
+
+
+.about-container{
+    width: 100%;
 }
 

@@ -3,12 +3,14 @@ import './styles/home.css'
 import Navbar from "./components/navbar";
 import ProductCard from "./components/product-card";
 import Contact from './components/contact';
+import About from './components/about';
 
 
 function Home() {
   return (
     <div className="home-container">
      
+     <span className='background-box'></span>
           <div className="header">
           <Navbar />
            <div className="home-image-container">
@@ -58,7 +60,11 @@ humour, or randomised words which don't look even slightly believable.There are 
           <div className='contact-container'>
            <Contact />
             </div> 
+          <div className='about-container'>
+              <About />
+            </div> 
           
+         
       </div>
       
    
