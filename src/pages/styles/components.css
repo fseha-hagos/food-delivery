@@ -55,3 +55,160 @@
 .search-container .login-button {
     align-items: center;
 }
+
+
+
+<!----------------------------->
+.card-container {
+    width: 270px;
+    height:400px;
+    border-radius:16px;
+    overflow: hidden
+    }
+.card-image-container {
+    width: 260px;
+    height: 310px;
+    padding: 5px 5px;
+    border-radius: 16px;
+    overflow: hidden
+}
+
+.card-image-container img{
+    width: 100%;
+    height: 100%;
+    border-radius: 16px
+}
+.card-content {
+    padding: 3px 5px;
+    margin-top: 17px;
+}
+.card-content .order{
+    width: 90px;
+    padding: 4px 4px;
+   background-color: #F5980C;
+   border-radius: 16px;
+   text-align: center;
+   float: left;
+   font-size: 17px;
+   font-weight: 500;
+   color: #2F303A;
+}
+.card-content .title-container{
+    text-align: right;
+    float: right;
+}
+.card-content p{
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0;
+    margin: 0;
+ }
+.card-content .title{
+    font-weight: 600;
+    font-size: 20px;
+    color: #2F303A;
+    border-radius: 16px
+ }
+.card-content .price{
+    font-weight: 600;
+    font-size: 17px;
+    color: #787878;
+   border-radius: 16px
+ }
+
+
+
+
+ .contact-detail {
+    position: relative;
+    padding: 37px 10px;
+    height:90vh;
+   
+    overflow: hidden;
+ }
+ .contact-detail p{
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    margin-left: 50px;
+ }
+ .contact-detail .contact-title{
+    font-size: 33px;
+    font-family: 'Lily Script One', cursive;
+    color: #2F303A;
+    font-weight: 400;
+    
+}
+.contact-detail .contact-subtitle{
+    font-size: 28px;
+    font-family:'Abyssinica SIL';
+    color: #606060;
+    font-weight: 400;
+ }
+
+ .contact-detail .contact-image{
+    top: 20%;
+    right: 0;
+    position: absolute;
+    width: 53%;
+    height: 70%;
+    margin: 10px 10px;
+    border-radius:  30px;
+    background-image:  url("../assets/contact-366fc1ee9bd50482ba048d127f3e98e4.png");
+ }
+ .contact-detail .contact-form {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 45%;
+    border-radius: 0px 100px 0px 100px;
+    background-color: rgba(245,152,12,0.10);
+    height: 68%;
+    margin: 10px 10px;
+    overflow: hidden;
+ }
+
+ .contact-detail .contact-form form{
+    width: 80%;
+    float: right;
+    align-items: left;
+    margin-right: 10px;
+    overflow: hidden;
+ }
+ .contact-detail .contact-form input{
+    display: block;
+    border-style: none;
+    margin: 0 auto;
+    margin-top: 38px;
+    width: 100%;
+    border-bottom: 1.5px solid #2F303A;
+    padding: 10px;
+    background-color: transparent;
+    font-size: 19px;
+    font-family:'Abyssinica SIL';
+    color: #2F303A;
+    font-weight: 400;
+ }
+ 
+ .contact-detail .contact-form textarea{
+    display: block;
+    border-style: none;
+    margin-top: 38px;
+    width: 80%;
+    text-align: left;
+    border: 1.5px solid #2F303A;
+    border-radius: 15px;
+    background-color: transparent;
+    font-size: 19px;
+    font-family:'Abyssinica SIL';
+    color: #2F303A;
+    font-weight: 400;
+ }
+ .contact-detail .contact-form input[type="submit"]{
+    margin-top: 60px;
+    background-color: #F5980C;
+    border-style: none;
+    border-radius: 25px;
+ }
+
+ 

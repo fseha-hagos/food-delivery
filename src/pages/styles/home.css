@@ -2,6 +2,7 @@
 
 .home-container {
     background-color: #F5F5DC;
+    padding-bottom: 70px;
 }
 
 .header {
@@ -10,7 +11,10 @@
     margin: 0px auto;
     overflow: hidden;
 }
+
+
 .home-image-container{
+    position: relative;
     height:75%;
     width:1156px;
     margin: 5px auto;
@@ -18,7 +22,51 @@
     background-image: url("../assets/conver.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+.home-image-container::before{
+    background-color: rgba(0, 0, 0, 0.37);
+    content: '';
+    border-radius: 35px;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+.home-image-container .royal{
+    font-size: 50px;
+    font-family: 'Lily Script One', cursive;
+    color: #F5980C;
+    z-index: 1;
+   padding: 0;
+   margin: 0;
+ }
+.home-image-container .restorant{
+    font-size: 50px;
+     font-family:'Abyssinica SIL';
+    padding: 0;
+    margin: 0;
+    color: white;
+    z-index: 1;
+ }
+.home-image-container p{
+    font-size: 20px;
+    font-family:'Abyssinica SIL';
+   padding: 0;
+   margin: 0;
+   margin-top: 70px;
+   color: white;
+   z-index: 1;
+ }
+.home-image-container p span{
+    display:inline-block;
+    margin:0 28px;
+   width: 37px;
+    height: 3px;
+    border-top: 1px solid white;
+   z-index: 1;
+ }
 .welcome-container {
     width:1200px;
     height:450px;
@@ -40,7 +88,6 @@
     margin-top: 36px;
     margin-left: 30px;
  
-   
 }
 .welcome-container h2 {
     font-size: 50px;
@@ -98,13 +145,26 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.wrapper-container p {
- font-size: 35px;
- font-family: 'Lily Script One', cursive;
-}
 .wrapper-container {
     margin: 0 90px;
 }
+.wrapper-container .wrapper-title {
+ font-size: 35px;
+ font-family: 'Lily Script One', cursive;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.wrapper-container .wrapper-title span{
+    display:inline-block;
+    margin:0 28px;
+    width: 40px;
+    height: 3px;
+    border-top: 1px solid black;
+   z-index: 1;
+ }
+
 .wrapper-container .row {
     
     display: flex;
@@ -113,6 +173,23 @@
     justify-content: space-between;
     margin-top: 100px;
 }
-.wrapper-container .row > div{
-    
+
+.wrapper-container .discover-button {
+    margin: 10px auto;
+    margin-top: 35px;
+    width: 180px;
+    padding: 7px;
+    color:#F5980C;
+    background-color: #000;
+    border-radius: 50px;
 }
+.wrapper-container .discover-button span{
+   font-weight: 700;
+}
+
+.contact-container{
+    margin:60px auto;
+    width: 94%;
+  
+}
+
