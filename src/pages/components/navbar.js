@@ -17,7 +17,7 @@ function Navbar() {
                     <li className='menu-list-item'><a className='active' href='#'>Home</a></li>
                     <li className='menu-list-item'><a href='#'>Menu</a></li>
                     <li className='menu-list-item'><a href='#'>Order Online</a></li>
-                    <li className='menu-list-item'><a href='#'>About</a></li>
+                    <li className='menu-list-item'><a href='About.js'>About</a></li>
                     <li className='menu-list-item'><a href='#'>Contact</a></li>
                 </ul>
             </div>

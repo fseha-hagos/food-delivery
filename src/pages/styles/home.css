@@ -2,6 +2,7 @@
 
 .home-container {
     background-color: #F5F5DC;
+
 }
 .background-box {
     display:inline;
@@ -209,6 +210,260 @@
 
 
 .about-container{
+    position: relative;
     width: 100%;
+    bottom: 0;
 }
 
+
+
+.about-wrapper{
+    width: 90%;
+    height: 500px;
+    margin: 70px auto;
+    position: relative;
+}
+
+.about-wrapper .bg-circle{
+    height: 450px;
+    width: 550px;
+    border-radius: 40%;
+    background-color: rgba(245,152,12,0.10);
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    
+}
+.about-wrapper .fir-image-con{
+    height: 345px;
+    width: 330px;
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.about-wrapper .sec-image-con{
+    height: 345px;
+    width: 330px;
+    position: absolute;
+    left: 250px;
+    bottom: 7px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.about-wrapper .about-writing{
+    position: absolute;
+    right: 0;
+    max-width: 600px;
+    height: 500px;
+    padding-left:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.about-wrapper .about-writing h2{
+    font-size: 40px;
+    font-family: 'Lily Script One', cursive;
+    text-align: left;
+    color: #F5980C;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.about-wrapper .about-writing p{
+    font-size: 20px;
+    font-family:'Abyssinica SIL';
+    color: #2F303A;
+    text-align: left;
+}
+.about-foot-con {
+    margin-top: 40px;
+    
+}
+.about-foot-con .signup,.about-foot-con .login{
+    display: inline-block;
+    
+    padding: 10px;
+    width: 150px;
+    border: 3px solid #F5980C;
+    border-radius: 40px;
+}
+.about-foot-con span{
+    display: inline-block;
+    margin: 0 60px;
+}
+.about-foot-con h3{
+    font-size: 30px;
+    font-family: 'Lily Script One', cursive;
+    color: #F5980C;
+    margin: 100px 0px 60px 0px;
+}
+
+
+.order-online{
+    position: "relative";
+    background-image: url('../assets/orderonline.jpg');
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+}
+.order-online .order-online-wrapper{
+    height: 700px;
+    width: 100%;
+    margin-top: 90px;
+    display: flex;
+    position: relative;
+}
+.order-online .order-online-wrapper .background-pizza{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: -150px;
+    background-image: url('../assets/bgpizza-39d43bb340c543c7808076f899ced767.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    bottom: 0px;
+    
+}
+.order-online-wrapper .order-online-wrapper-right {
+    margin: 0;
+    padding: 0;
+    width: 50%;
+   
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    
+}
+.order-online-wrapper .order-online-wrapper-right .bike-container{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 480px;
+    height: 480px;
+    background-image: url('../assets/bike-031bcb4123cce47b60d4808033c5b14c.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+    
+}
+.order-online-wrapper .order-online-wrapper-right p{
+    position: absolute;
+    top: 550px;
+    text-align: left;
+    font-size: 19px;
+    margin-right: 17px;
+}
+
+.order-online-wrapper .order-online-wrapper-left {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 50%;
+    overflow: hidden;
+    padding: 10px 150px;
+   
+}
+.order-online-wrapper .order-online-wrapper-left h2{
+    margin: 0;
+    padding: 0;
+    font-size: 70px;
+    font-family: 'Lily Script One', cursive;
+    color: #F5980C;
+   
+}
+.order-online-wrapper .order-online-wrapper-left h3{
+    margin: 0;
+    padding: 0;
+    font-size: 66px;
+    font-family: 'Lily Script One', cursive;
+    
+}
+.order-online-wrapper .order-online-wrapper-left p{
+    text-align: left;
+    font-size: 23px;
+    
+}
+
+.order-online-wrapper .order-online-wrapper-left .choose-recipe{
+    display: inline-block;
+    width: 220px;
+    padding: 7px;
+    margin-top: 50px;
+    font-size: 22px;
+    background-color: #F5980C;
+    color: white;
+    border-radius: 40px;
+}
+
+
+.recipe-wrapper {
+    width: 90%;
+    margin: 60px auto;
+    display: flex;
+    justify-content: space-around;
+}
+.recipe-wrapper .recipe-img-container{
+    width: 440px;
+    height: 440px;
+    overflow: hidden;
+}
+
+.recipe-wrapper .recipe-contents{
+    width: 50%;
+    height: 440px;
+    text-align: right;
+    padding: 30px;
+    background-color: rgba(245,152,12,0.25);
+    border-radius: 75px 0px 75px 0px;
+}
+.recipe-wrapper .recipe-contents h2{
+    margin: 0;
+    padding: 0;
+    font-size: 35px;
+    font-weight: 400;
+}
+.recipe-wrapper .recipe-contents h3{
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    font-weight: 400;
+}
+.recipe-wrapper .recipe-contents p{
+   margin: 30px 0px 30px 55px;
+   font-size: 18px;
+}
+.recipe-wrapper .recipe-contents span{
+    display: inline-block;
+   margin-top: 55px;
+   width: 250px;
+   padding: 15px;
+   background-color: #F5980C;
+   border-radius: 15px;
+   text-align: center;
+   font-size: 20px;
+}
+.rrelative-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 300px;
+    align-items: left;
+    padding-right:30px ;
+    
+}
+.rrelative-container h3{
+   text-align: left;
+   color:  #2F303A;
+}
+.rrelative-container .hor-line{
+   width: 100%;
+   border: 1px solid #A39C9C;
+   margin: 0px 0px 20px 0px;
+   
+}
+
+.rrelative-container .rrelative-products{
+    display: flex;
+    justify-content: end;
+    gap: 60px;
+    margin-right: 40px;
+}
