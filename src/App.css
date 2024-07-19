@@ -8,10 +8,6 @@ html {
   max-width: 100%;
     overflow-x: hidden;
 }
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

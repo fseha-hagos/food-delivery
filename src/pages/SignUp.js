@@ -36,7 +36,7 @@ function SignUp() {
                        <input type="number" name='password' placeholder={"password"} value={password} onChange={(e) => setPassword(e.target.value)} />
                    <input type="submit" name='submit' value={"Sign up"}/>
 
-               <div className='button btn-google'>continue with google</div>
+               <div className='button btn-google'>continue with google <img src={require('./assets/google-cb79f3df7e515bd98a4d666f38de5ec1.png')} alt='google' style={{width:"30px", height:"30px"}}/></div>
                </form>
                <div className='login'>Have an Account?<a href='/'>Login</a></div>
           </div>
