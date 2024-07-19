@@ -279,7 +279,133 @@
 
 
  .rr-container{
-   width: 200px;
-   height: 200px;
-   background-color: #F5980C;
+   width: 280px;
+   height: 330px;
+   display: flex;
+   flex-direction: column;
+  
  }
+ .rr-container .rr-image-container {
+   overflow: hidden;
+   margin: 0px auto;
+   width: 240px;
+   height: 200px;
+   border-radius: 10px;
+ }
+ .rr-container .rr-hor{
+   width: 270px;
+   margin: 10px 0px;
+   border-top: 1px solid black;
+ }
+ .rr-container .rr-title-container{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+ .rr-title-container .rr-title{
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    font-weight: 400;
+ }
+ .rr-title-container .rr-price{
+    margin: 0;
+    padding: 0;
+    font-size: 19px;
+    font-weight: 400;
+ }
+ .rr-container .rr-order-button{
+  font-size: 22px;
+   padding: 12px;
+   background-color: #F5980C;
+   border-radius: 10px;
+   margin-top: 20px;
+ }
+
+
+
+
+ .login-container{
+   position: relative;
+   overflow: hidden;
+   padding: 20px;
+   justify-content: space-evenly;
+   width: 400px;
+   height: 500px;
+   margin: 0 auto;
+}
+ .login-container .left-box-bg{
+   position: absolute;
+   left: -194px;
+   bottom: 20px;
+   background-color: rgba(245,152,12,0.25);
+    width: 400px;
+    height: 586px;
+    rotate: 36.64deg;
+   border-radius: 10px;
+   z-index: -2;
+}
+ .login-container .right-box-bg{
+   position: absolute;
+   right: -407px;
+   rotate: -54deg;
+   bottom: 0;
+   background-color: rgba(245,152,12,0.25);
+    width: 642px;
+    height: 317px;
+    z-index: -2;
+  
+}
+
+
+.login-container  form{
+   display: flex;
+   flex-direction: column;
+   gap: 40px;
+   margin-top: 70px;
+   width: 310px;
+}
+.login-container .input-con{
+   padding: 10px 0px;
+   border-bottom: 2px solid #2F303A;
+   margin-bottom: 20px;
+   text-align: left;
+   color: #2F303A;
+   font-weight: 400;
+}
+.login-container .input-con span{
+   padding-left: 3px;
+   margin-right: 2px;
+  
+}
+.login-container  form input{
+  
+   border-style: none;
+  
+   background-color: transparent;
+   font-size: 17px;
+  
+}
+.login-container form input[type="submit"]{
+   padding: 13px;
+   margin-left: 20px;
+   margin-top: 25px;
+   margin-bottom: 20px;
+   width: 200px;
+   border-style: none;
+   border-radius: 18px;
+   background-color: #F5980C;
+   color: white;
+   text-align: center;
+  
+}
+
+.login-container .l-signup{
+   position: absolute;
+   bottom: 20px;
+   right: 15px;
+   text-align: right;
+   color: #2F303A;
+   font-size: 19px;
+   
+}

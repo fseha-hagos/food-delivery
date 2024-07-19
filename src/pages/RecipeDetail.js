@@ -10,6 +10,7 @@ import RecipeRProductCard from './components/recipeRProductCard';
 function RecipeDetail() {
   return (
     <div className="home-container">
+      <span className='bg-triangle'></span>
       <Navbar />
         <div className='recipe-wrapper'>
             <div className='recipe-img-container'><img style={{width:"430px", height:"430px"}} src={require('./assets/bgpizza-39d43bb340c543c7808076f899ced767.png')}/></div>
@@ -30,6 +31,7 @@ function RecipeDetail() {
             <h3>Related Recipes</h3>
             <hr className='hor-line'/>
             <div className='rrelative-products'>
+            <RecipeRProductCard />
             <RecipeRProductCard />
             <RecipeRProductCard />
             <RecipeRProductCard />

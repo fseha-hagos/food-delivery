@@ -2,7 +2,8 @@
 
 .home-container {
     background-color: #F5F5DC;
-
+    position: relative;
+    z-index: -2;
 }
 .background-box {
     display:inline;
@@ -15,6 +16,18 @@
     border-radius: 35px;
     rotate: -20.50deg;
     z-index: 1;
+}
+.bg-triangle{
+    display:inline;
+    position: absolute;
+    top: 470px;
+    left: -150px;
+    width: 300px;
+    height: 300px;
+    background-color: #D9D9D9;
+    border-radius: 5px;
+    rotate: 45deg;
+    z-index: -1;
 }
 
 .header {
@@ -462,8 +475,173 @@
 }
 
 .rrelative-container .rrelative-products{
-    display: flex;
-    justify-content: end;
+    
     gap: 60px;
     margin-right: 40px;
+    overflow-x: scroll;
+    width: 100%;
+    height: 330px;
+    display: flex;
+    flex-direction: row;
 }
+
+
+
+.menu-header{
+    width: 90%;
+    margin: 40px auto;
+    padding: 20px 50px;
+ 
+}
+.menu-header .menu-box{
+   display: flex;
+   flex-direction: row;
+   padding: 0px 40px;
+   justify-content: space-between;
+   align-items: center;
+}
+.menu-header .menu-list {
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    color:#2F303A;
+    font-size: 18px;
+}
+.menu-box .menu-content{
+   padding: 10px 10px 0px 10px;
+   width: 50%;
+
+   text-align: left;
+}
+.menu-box .menu-content p{
+   padding: 10px;
+   margin-left: 15px;
+   text-align: left;
+   font-size: 20px;
+}
+.menu-box .menu-content h2{
+    margin-top: 70px;
+    padding: 0;
+    font-size: 38px;
+    font-family: 'Lily Script One', cursive;
+    color: #F5980C;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.menu-box .menu-content h2 span{
+    margin: 0;
+    padding: 0;
+    width: 70px;
+    border-top: 1px solid #2F303A;
+    display: inline-block;
+}
+.menu-box .menu-logo-container{
+    width: 300px;
+    height: 243px;
+}
+.menu-wrapper{
+    display: flex;
+    gap: 40px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.menu-botm-nav{
+    margin: 50px 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu-botm-nav span{
+    font-size: 22px;
+}
+.menu-botm-nav .nav-button-icon{
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.signup-container{
+    position: relative;
+    display: flex;
+    padding: 20px;
+    justify-content: space-evenly;
+    height: 600px;
+}
+.signup-container .signup-image-container{
+    width: 390px;
+    height: 600px;
+}
+.signup-container .bg-circle{
+    width: 390px;
+    height: 420px;
+    display: inline-block;
+    position: absolute;
+    z-index: -1;
+    top: 100px;
+    background-color: rgba(245,152,12,0.25);
+    border-radius: 50%;
+
+}
+
+.signup-container .signup-form-container{
+    width: 370px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 10px;
+    border-radius: 0px 55px 0px 55px;
+    border-top: 8px solid rgba(245,152,12,0.25);
+    border-right: 8px solid rgba(245,152,12,0.25);
+    border-bottom: 8px solid rgba(245,152,12,0.25);
+}
+.signup-form-container .signup-title{
+    padding: 0px;
+    margin: 0px;
+    font-size: 26px;
+    font-weight: 400;
+    font-family: 'Lily Script One', cursive;
+    color: #000;
+    text-align: left;
+}
+.signup-form-container .signup-subtitle{
+    margin: 0px;
+    padding: 0px;
+    color: #606060;
+}
+
+.signup-container .signup-form-container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 30px;
+}
+.signup-container .signup-form-container form input{
+    padding: 10px;
+    border-style: none;
+    border-bottom: 2px solid #2F303A;
+    background-color: transparent;
+    font-size: 17px;
+}
+.signup-container .signup-form-container form input[type="submit"], .signup-container .btn-google{
+    padding: 13px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: #F5980C;
+    color: white;
+    text-align: center;
+   
+}
+.signup-container .btn-google{
+    background-color: white;
+    color: black;
+}
+.signup-container .login{
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
