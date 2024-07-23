@@ -1,4 +1,9 @@
 
+import {
+  BrowserRouter as Router,
+  Routes, Route,
+  Link
+} from 'react-router-dom';
 
 function RecipeRProductCard() {
   return (
@@ -12,7 +17,7 @@ function RecipeRProductCard() {
                     <h3 className='rr-price'>269.99 birr</h3>
                 </div>
          
-            <span className='button rr-order-button'>Order</span>
+                <Link to="/recipe" className='button rr-order-button'> <span >Order</span></Link>
     </div>
       
    
