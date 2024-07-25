@@ -2,21 +2,9 @@
 
 .home-container {
     background-color: #F5F5DC;
-    position: relative;
-    z-index: 1;
 }
-.background-box {
-    display:inline;
-    position: absolute;
-    top: 1500px;
-    left: 30px;
-    width: 1300px;
-    height: 630px;
-    border: 10px solid rgba(245,152,12,0.25);
-    border-radius: 35px;
-    rotate: -20.50deg;
-    z-index: -1;
-}
+
+
 .bg-triangle{
     display:inline;
     position: absolute;
@@ -30,26 +18,13 @@
     z-index: -1;
 }
 
-.header {
-    width: 100%;
-    height: 100vh;
-    margin: 0px auto;
-    overflow: hidden;
-}
+
 
 
 .home-image-container{
-    position: relative;
-    height:75%;
-    width:1156px;
-    margin: 5px auto;
-    border-radius: 35px;
     background-image: url("../assets/conver.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 .home-image-container::before{
     background-color: rgba(0, 0, 0, 0.37);
@@ -60,20 +35,11 @@
     width: 100%;
   }
 .home-image-container .royal{
-    font-size: 50px;
     font-family: 'Lily Script One', cursive;
     color: #F5980C;
-    z-index: 1;
-   padding: 0;
-   margin: 0;
  }
 .home-image-container .restorant{
-    font-size: 50px;
      font-family:'Abyssinica SIL';
-    padding: 0;
-    margin: 0;
-    color: white;
-    z-index: 1;
  }
 .home-image-container p{
     font-size: 20px;
@@ -93,102 +59,60 @@
    z-index: 1;
  }
 .welcome-container {
-    width:1200px;
-    height:450px;
-    margin: 100px auto;
-    position:relative
+   
 }
 .welcome-content-box {
-    width:810px;
-    height:450px;
     background-color: rgba(245,152,12,0.25);
-    overflow: hidden;
-    border-top-right-radius: 50px;
-    border-bottom-left-radius: 50px;
-    float: left;
 }
 .welcome-content {
-    width:600px;
-    height:350px;
-    margin-top: 36px;
-    margin-left: 30px;
  
 }
 .welcome-container h2 {
-    font-size: 50px;
-    text-align: left;
+   
     font-family: 'Lily Script One', cursive;
     color: #F5980C;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     
 }
-.welcome-container p {
-    text-align: left;
-    font-weight: 400;
-    font-size: 18px;
-}
-.welcome-container p span {
-    padding-left: 1.5em;
-}
+
 .welcome-container .reserve-button {
-    margin: 10px auto;
-    margin-top: 60px;
-    width: 150px;
-    padding: 15px;
-    background-color: #F5980C;
-    border-radius: 50px;
+    cursor: pointer;
+    border: 1px solid #F5980C;
+    animation-name: button-out;
+    animation-duration: 0.35s;
+    animation-fill-mode: forwards;
 }
+.reserve-button:hover {
+    animation-name: button-hover;
+    animation-duration: 0.35s;
+    animation-fill-mode: forwards;
+  }
+
 .welcome-container .reserve-button span{
-   font-weight: 700;
+  
 }
 
 .welcome-showcase{
-    position:absolute;
-    left:650px ;
-    width: 530px;
-    height: 430px;
+   
 }
 .welcome-showcase-image-1{
-    position:absolute;
-    bottom: 0;
-    left: 0px;
-    width: 320px;
-    height: 380px;
-    border-radius: 16px;
     background-image: url("../assets/image-1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 .welcome-showcase-image-2{
-    position:absolute;
-    top: 0;
-    right: 0px;
-    width: 320px;
-    height: 380px;
-    border-radius: 16px;
     background-image: url("../assets/image-2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 .wrapper-container {
-    margin: 0 90px;
-    z-index: 100;
 }
 .wrapper-container .wrapper-title {
- font-size: 35px;
  font-family: 'Lily Script One', cursive;
- display: flex;
- align-items: center;
- justify-content: center;
  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .wrapper-container .wrapper-title span{
-    display:inline-block;
-    margin:0 28px;
-    width: 40px;
-    height: 3px;
-    border-top: 1px solid black;
-   z-index: 1;
+   
  }
 
 .wrapper-container .row {
@@ -202,21 +126,24 @@
 }
 
 .wrapper-container .discover-button {
-    margin: 10px auto;
-    margin-top: 35px;
-    width: 180px;
-    padding: 7px;
-    color:#F5980C;
-    background-color: #000;
-    border-radius: 50px;
+    cursor: pointer;
+    border: 1px solid #F5980C;
+    color: black;
+    animation-name: d-button-out;
+    animation-duration: 0.35s;
+    animation-fill-mode: forwards;
 }
+
+.wrapper-container .discover-button:hover {
+    animation-name: d-button-hover;
+    animation-duration: 0.35s;
+    animation-fill-mode: forwards;
+  }
 .wrapper-container .discover-button span{
-   font-weight: 700;
 }
 
 .contact-container{
-    margin:60px auto;
-    width: 94%;
+    
 }
 
 
@@ -648,4 +575,47 @@
 }
 
 
+
+
+
+
+@keyframes button-out {
+    from {
+      border-color: #F5980C;
+      background-color: #F5980C;
+      color: #fffef2;
+    }
+    to {
+      color: #F5980C;
+      border: 1px solid #F5980C;
+    }
+  }
+  
+  @keyframes button-hover {
+    to {
+      border-color: #F5980C;
+      background-color: #F5980C;
+      color: #fffef2;
+    }
+  }
+@keyframes d-button-out {
+    from {
+      border-color: #F5980C;
+      background-color: black;
+      color: #F5980C;
+    }
+    to {
+      color: black;
+      border: 1px solid #F5980C;
+    }
+  }
+  
+  @keyframes d-button-hover {
+    to {
+      border-color: #F5980C;
+      background-color: black;
+      color: #F5980C;
+    }
+  }
+  
 
