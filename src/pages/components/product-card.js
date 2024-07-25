@@ -12,7 +12,7 @@ function ProductCard() {
                 <img className='w-[100%] h-[100%] rounded-[16px]' src={require('../assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg')} alt='produtcs for today'/>
             </div>
             <div className='card-content py-[3px] w-[330px] sm:w-[260px] mx-auto  px-[20px] sm:px-[5px] mt-[17px]'>  
-            <Link to="/recipe"  className='order w-[90px] px-[4px] py-[4px] rounded-[16px] text-center float-left text-[17px] font-[500] '><span>Order</span></Link>
+            <Link to="/recipe"  className='order w-[90px] px-[4px] py-[4px] no-underline rounded-[16px] text-center float-left text-[17px] font-[500] '><span>Order</span></Link>
                 <div className='title-container  text-right float-right'> 
                     <p className='title font-[600] text-[20px] rounded-[16px]'>Especial Burger</p>
                     <p className='price font-[600] text-[17px] rounded-[16px]'>269.99 birr</p>
