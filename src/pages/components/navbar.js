@@ -20,10 +20,10 @@ function Navbar() {
             </div>
             <div className='menu-container'>
                 <ul className='menu-list'>
-                    <li className='menu-list-item'><Link className='active' to="/home">Home</Link></li>
-                    <li className='menu-list-item'><Link to="/menu">Menu</Link></li>
-                    <li className='menu-list-item'><Link to="/order">Order Online</Link></li>
-                    <li className='menu-list-item'><Link to="/about">About</Link></li>
+                    <li className='menu-list-item hover:border-b-[2px] hover:border-black'><Link className='active' to="/home">Home</Link></li>
+                    <li className='menu-list-item hover:border-b-[2px] hover:border-black'><Link to="/menu">Menu</Link></li>
+                    <li className='menu-list-item hover:border-b-[2px] hover:border-black'><Link to="/order">Order Online</Link></li>
+                    <li className='menu-list-item hover:border-b-[2px] hover:border-black'><Link to="/about">About</Link></li>
                   
                 </ul>
 

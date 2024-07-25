@@ -6,6 +6,7 @@ import MenuRecipe from './pages/MenuRecipe';
 import OrderOnline from './pages/OrderOnline';
 import RecipeDetail from './pages/RecipeDetail';
 import SignUp from './pages/SignUp';
+
 import {
   BrowserRouter as Router,
   Routes, Route,
@@ -19,6 +20,8 @@ function App() {
      
      <Routes>
                     
+                    <Route path="/"
+                        element={<Home />} />
                     <Route path="/home"
                         element={<Home />} />
                     <Route path="/menu"
