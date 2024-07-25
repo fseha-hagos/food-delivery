@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-npm clone ...
+npm clone https://github.com/fseha-hagos/food-delivery.git
 cd food-delivery
-npm install
+npm install --force
 npm start
