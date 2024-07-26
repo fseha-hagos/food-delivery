@@ -1,6 +1,7 @@
 
 import './App.css';
 import AboutUs from './pages/AboutUs';
+import Contact from './pages/Contact';
 import Home from './pages/home';
 import MenuRecipe from './pages/MenuRecipe';
 import OrderOnline from './pages/OrderOnline';
@@ -10,7 +11,6 @@ import SignUp from './pages/SignUp';
 import {
   BrowserRouter as Router,
   Routes, Route,
-  Link
 } from 'react-router-dom';
 
 function App() {
@@ -26,14 +26,16 @@ function App() {
                         element={<Home />} />
                     <Route path="/menu"
                         element={<MenuRecipe />} />
-                    <Route path="/order"
+                    <Route path="/order-online"
                         element={<OrderOnline />} />
                     <Route path="/recipe"
                         element={<RecipeDetail />} />
                     <Route path="/about"
                         element={<AboutUs />} />
-                    <Route path="/signup"
+                    <Route path="/login"
                         element={<SignUp />} />
+                    <Route path="/contact"
+                        element={<Contact />} />
                 </Routes>
     </div>
     </Router>

@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../assets/logo.png';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -27,16 +28,21 @@ const Logo = () => (
   </a>
 );
 
-const AuthButtons = () => (
+const AuthButtons = () => {
+  const navigate = useNavigate();
+
+  return(
   <div className="flex items-center">
     <button
       type="button"
       className="text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm mr-2 px-3 py-1 text-center dark:bg-amber-500 dark:hover:bg-amber-600 dark:focus:ring-amber-800"
+      onClick={()=>navigate("/login")}
     >
       Log In
     </button>
   </div>
 );
+}
 
 const SearchToggle = () => (
   <button
@@ -102,6 +108,7 @@ const MenuToggle = () => (
   </button>
 );
 
+
 const Menu = () => (
   <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
     <div className="relative mt-3 md:hidden">
@@ -124,19 +131,15 @@ const Menu = () => (
       />
     </div>
     <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-slate-100 rounded-lg bg-slate-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-slate-900 md:dark:bg-slate-900 dark:border-slate-700">
-      {['Home', 'Menu', 'Order Online', 'About', 'Contact'].map((item) => (
-        <li key={item}>
-          <a
-            href={`/${item.toLowerCase().replace(' ', '-')}`}
-            className="block py-2 px-3 text-slate-900 rounded hover:text-amber-500 md:hover:bg-transparent md:hover:text-amber-500 md:p-0 dark:text-amber-200 dark:hover:text-amber-500 md:dark:hover:bg-transparent dark:border-slate-700"
-            aria-current={item === 'Home' ? 'page' : undefined}
-          >
-            {item}
-          </a>
+      {['Home', 'Menu', 'Order Online', 'About', 'Contact'].map((item, index) => (
+        <li key={index}>
+          <Link to={`/${item.toLowerCase().replace(' ', '-')}`} className={"block py-2 px-3 text-slate-900 rounded hover:text-amber-500 md:hover:bg-transparent md:hover:text-amber-500 md:p-0 dark:text-amber-200 dark:hover:text-amber-500 md:dark:hover:bg-transparent dark:border-slate-700"}
+          > {item}</Link>
         </li>
       ))}
     </ul>
   </div>
 );
+
 
 export default Navbar;
