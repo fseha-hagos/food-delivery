@@ -1,4 +1,6 @@
 import React from 'react';
+import '../styles/components.css'
+
 import {
     BrowserRouter as Router,
     Routes, Route,
