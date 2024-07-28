@@ -3,7 +3,7 @@ import './styles/home.css'
 import Navbar from "./components/navbar";
 import ProductCard from "./components/product-card";
 import Contact from './components/contact';
-import About from './components/about';
+import Footer from './components/footer';
 import { Fade, Slide } from 'react-reveal';
 
 
@@ -41,7 +41,7 @@ function AboutUs() {
           <h3>pick your favorite recipe!</h3>
         </div>
           <div className='about-container'>
-              <About />
+              <Footer />
             </div> 
           
          
