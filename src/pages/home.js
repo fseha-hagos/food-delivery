@@ -9,6 +9,72 @@ import { useEffect, useState } from 'react';
 import MyCarousel from './components/my-carousel';
 
 
+const products = [
+  {
+    "id" : 1,
+    "href" : "img",
+   "imageAlt" : "products",
+   "imageSrc" : require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
+   "name" : "Especial Burger",
+  "price" : 269.99
+  },
+  {
+    "id" : 1,
+    "href" : "img",
+   "imageAlt" : "products",
+   "imageSrc" : require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
+   "name" : "Especial Burger",
+  "price" : 269.99
+  },
+  {
+    "id" : 1,
+    "href" : "img",
+   "imageAlt" : "products",
+   "imageSrc" : require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
+   "name" : "Especial Burger",
+  "price" : 269.99
+  },
+  {
+    "id" : 1,
+    "href" : "img",
+   "imageAlt" : "products",
+   "imageSrc" : require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
+   "name" : "Especial Burger",
+  "price" : 269.99
+  },
+  {
+    "id" : 1,
+    "href" : "img",
+   "imageAlt" : "products",
+   "imageSrc" : require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
+   "name" : "Especial Burger",
+  "price" : 269.99
+  },
+  {
+    "id" : 1,
+    "href" : "img",
+   "imageAlt" : "products",
+   "imageSrc" : require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
+   "name" : "Especial Burger",
+  "price" : 269.99
+  },
+  {
+    "id" : 1,
+    "href" : "img",
+   "imageAlt" : "products",
+   "imageSrc" : require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
+   "name" : "Especial Burger",
+  "price" : 269.99
+  },
+  {
+    "id" : 1,
+    "href" : "img",
+   "imageAlt" : "products",
+   "imageSrc" : require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
+   "name" : "Especial Burger",
+  "price" : 269.99
+  },
+]
 
 function Home() {
 
@@ -60,14 +126,14 @@ humour, or randomised words which don't look even slightly believable.There are 
           <div className="wrapper-container mx-[20px] md:mx-[90px] my-0 z-100"> 
  
            <p className='wrapper-title text-[35px]  flex items-center justify-center'><span className='inline-block my-0 mx-[10px] md:mx-[28px] w-[40px] h-[3px] border-t-[1px] border-solid border-black z-1'></span>today’s special<span className='inline-block my-0 mx-[10px] md:mx-[28px] w-[40px] h-[3px] border-t-[1px] border-solid border-black z-1'></span></p>
-          
-            <div className='relative grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 md:gap-[40px] mt-[50px] md:mt-[100px]  z-3'>
-              <div><ProductCard /></div>        
-              <div><ProductCard /></div>              
-              <div><ProductCard /></div>
-              <div><ProductCard /></div>        
-              <div><ProductCard /></div>              
-              <div><ProductCard /></div>
+           <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+           <h2 className="sr-only">Products</h2>
+            <div className='relative grid grid-cols-1 gap-x-20 gap-y-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8   z-3'>
+              {products.map((item,index) => (       
+                <ProductCard product={item}/>
+              ))}
+              
+            </div>
             </div>
             
             <div className='discover-button my-[10px] mt-[35px] mx-auto w-[180px] p-[7px]  rounded-[50px]'><span className='font-[700]'>Discover More!</span></div>

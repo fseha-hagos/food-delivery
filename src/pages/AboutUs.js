@@ -4,22 +4,23 @@ import Navbar from "./components/navbar";
 import ProductCard from "./components/product-card";
 import Contact from './components/contact';
 import About from './components/about';
+import { Fade, Slide } from 'react-reveal';
 
 
 function AboutUs() {
   return (
-    <div className="home-container">
+    <div className="relative bg-custom_background z-1">
       <Navbar />
           
      
-        <div className='about-wrapper'>
-          <div className='bg-circle'> </div>
-          <div className='fir-image-con'><img style={{width:"100%", height:"100%"}} src={require("./assets/about-2758e5de75ac8bf1c6d1c82464ec7177.jpg")}/></div>
-          <div className='sec-image-con'><img style={{width:"100%", height:"100%"}} src={require("./assets/about-e1c2c179e66b3db526235f5b03a7c268.jpg")}/></div>
+        <div className='about-wrapper relative w-[90%] h-[500px] my-[70px] mx-auto '>
+          <div className='bg-circle  absolute left-[10px] top-[10px] h-[450px] w-[550px] rounded-[40%] bg-custom_primary_10'> </div>
+         <Slide left> <div className='fir-image-con h-[345px] w-[330px] absolute left-[7px] top-[7px] overflow-hidden rounded-[10px]'><img className='w-[100%] h-[100%]' src={require("./assets/about-2758e5de75ac8bf1c6d1c82464ec7177.jpg")}/></div> </Slide>
+         <Fade left delay={500}> <div className='sec-image-con h-[345px] w-[330px] absolute left-[250px] bottom-[7px] overflow-hidden rounded-[10px]'><img className='w-[100%] h-[100%]' src={require("./assets/about-e1c2c179e66b3db526235f5b03a7c268.jpg")}/></div> </Fade>
 
-          <div className='about-writing'>
-            <h2>About Us</h2>
-            <p>Lorem ipsum, or lipsum as it is sometimes known, 
+          <div className='about-writing absolute right-0 max-w-[600px] h-[500px] pl-[20px] flex flex-column justify-center'>
+            <h2 className='text-[40px] text-left text-custom_primary  '>About Us</h2>
+            <p className='text-[20px] text-custom_sec text-left' >Lorem ipsum, or lipsum as it is sometimes known, 
               is dummy text used in laying out print, graphic or web designs. 
               The passage is attributed to an unknown typesetter in the 15th century 
               who is thought to have scrambled parts of Cicero's 
@@ -33,10 +34,10 @@ function AboutUs() {
           
         </div>
 
-        <div className='about-foot-con'>
-          <span className='button signup'>Sign up</span>
+        <div className='about-foot-con mr-[40px]'>
+          <span className='button signup inline-block p-[10px] w-[150px] rounded-[40px] font-[600]'>Sign up</span>
           <span className=''>Or</span>
-          <span className='button login'>Log in</span>
+          <span className='button login inline-block p-[10px] w-[150px] rounded-[40px] font-[600]'>Log in</span>
           <h3>pick your favorite recipe!</h3>
         </div>
           <div className='about-container'>

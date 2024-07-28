@@ -19,8 +19,9 @@ function MyCarousel() {
       <div className="home-image-container relative h-[480px]  max-w-[95%] my-[5px] mx-auto rounded-[35px] flex flex-col justify-center">
       <img
       
-          className="absolute d-block w-[100%] h-[100%]"
+          className="absolute cover d-block w-full h-full rounded-[35px]"
           src={require('../assets/conver.jpg')}
+          resizeMode={"cover"}
           alt="First kkkkkk"
         />
       <h2 className='royal text-[50px] z-10 p-0 m-0'>ROYAL</h2>
