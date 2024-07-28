@@ -3,7 +3,7 @@ import './styles/home.css'
 import Navbar from "./components/navbar";
 import ProductCard from "./components/product-card";
 import Contact from './components/contact';
-import About from './components/about';
+import Footer from './components/footer';
 import RecipeRProductCard from './components/recipeRProductCard';
 import { IconContext } from 'react-icons';
 import { CiCircleChevLeft } from "react-icons/ci";
@@ -78,7 +78,7 @@ function MenuRecipe() {
 </div>
        
           <div className='about-container'>
-              <About />
+              <Footer />
             </div> 
           
          
