@@ -3,7 +3,7 @@ import './styles/home.css'
 import Navbar from "./components/navbar";
 import ProductCard from "./components/product-card";
 import Contact from './components/contact';
-import About from './components/about';
+import Footer from './components/footer';
 import { Fade, Zoom } from 'react-reveal';
 
 function OrderOnline(props) {
@@ -30,7 +30,7 @@ function OrderOnline(props) {
                 </div>
             </div>
             <div className='about-container'>
-              <About />
+              <Footer />
             </div> 
         </div>
         
