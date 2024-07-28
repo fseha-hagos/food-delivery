@@ -3,7 +3,7 @@ import './styles/home.css'
 import Navbar from "./components/navbar";
 import ProductCard from "./components/product-card";
 import Contact from './components/contact';
-import About from './components/about';
+import Footer from './components/footer';
 import { Fade } from 'react-reveal';
 import { useEffect, useState } from 'react';
 import MyCarousel from './components/my-carousel';
@@ -145,7 +145,7 @@ humour, or randomised words which don't look even slightly believable.There are 
             </div> 
             </Fade>
           <div className='about-container'>
-              <About />
+              <Footer />
             </div> 
           
          
