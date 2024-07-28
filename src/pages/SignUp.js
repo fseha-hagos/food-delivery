@@ -1,7 +1,7 @@
 import '@fontsource/lily-script-one';
 import './styles/home.css'
 import Navbar from "./components/navbar";
-import About from './components/about';
+import Footer from './components/footer';
 import { useState } from 'react';
 
 
@@ -42,7 +42,7 @@ function SignUp() {
           </div>
         </div>
           <div className='about-container'>
-              <About />
+              <Footer />
             </div> 
           
          
