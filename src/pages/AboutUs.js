@@ -36,7 +36,7 @@ function AboutUs() {
 
         <div className='about-foot-con mr-[40px]'>
           <span className='button signup inline-block p-[10px] w-[150px] rounded-[40px] font-[600]'>Sign up</span>
-          <span className='text-slate-900 dark:text-slate-200'>Or</span>
+          <span className=''>Or</span>
           <span className='button login inline-block p-[10px] w-[150px] rounded-[40px] font-[600]'>Log in</span>
           <h3>pick your favorite recipe!</h3>
         </div>
