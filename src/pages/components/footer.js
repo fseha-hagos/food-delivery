@@ -1,9 +1,11 @@
 import React from "react";
-import logo from "./assets/logo.png";
+import logo from "../assets/logo.png";
+import { Slide } from "react-reveal";
 
 const Footer = () => {
     return (
-        <footer className="bg-slate-200 dark:bg-slate-900">
+      <Slide up>
+        <footer className="bg-slate-200 dark:bg-slate-950">
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
@@ -17,7 +19,7 @@ const Footer = () => {
                 </div>
                 <hr className="my-6 border-slate-200 sm:mx-auto dark:border-slate-700 lg:my-8" />
                 <div className="sm:flex sm:items-center sm:justify-between">
-                    <span className="text-sm text-slate-400 sm:text-center ">© 2024 <a href="/home" class="hover:underline">Royal-Delivery™</a>. All Rights Reserved.
+                    <span className="text-sm text-slate-400 sm:text-center ">© 2024 <a href="/home" class="hover:underline no-underline text-slate-500 dark:text-slate-400 ">Royal-Delivery™</a>. All Rights Reserved.
                     </span>
                     <div className="flex mt-4 sm:justify-center sm:mt-0">
                     <FooterSocialLinks />
@@ -25,6 +27,7 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
+        </Slide>
     );
 }
 
@@ -50,7 +53,7 @@ const Section = ({ title, items }) => (
 );
 
 const Logo = () => (
-  <a href="/home" className="flex items-center">
+  <a href="/home" className="flex items-center no-underline">
     <img src={logo} className="h-8 me-3" alt="Royal Delivery Logo" />
     <span className="self-center text-xl font-semibold whitespace-nowrap text-amber-500 dark:text-amber-200 hover:text-slate-900 dark:hover:text-amber-500">
       Royal Delivery
@@ -62,8 +65,8 @@ const About = () => (
   <Section
     title="About us"
     items={[
-      { href: "/menu", text: "Menu", className: "hover:text-amber-200" },
-      { href: "#", text: "Price", className: "hover:text-amber-200" }
+      { href: "/menu", text: "Menu", className: "hover:text-amber-200 no-underline text-slate-500 dark:text-slate-400 font-medium" },
+      { href: "#", text: "Price", className: "hover:text-amber-200 no-underline text-slate-500 dark:text-slate-400 font-medium" }
     ]}
   />
 );
@@ -72,8 +75,8 @@ const Services = () => (
   <Section
     title="Services"
     items={[
-      { href: "/Order-online", text: "Delivery", className: "hover:text-amber-200" },
-      { href: "#", text: "Packaging", className: "hover:text-amber-200" }
+      { href: "/Order-online", text: "Delivery", className: "hover:text-amber-200 no-underline text-slate-500 dark:text-slate-400 font-medium" },
+      { href: "#", text: "Packaging", className: "hover:text-amber-200 no-underline text-slate-500 dark:text-slate-400 font-medium" }
     ]}
   />
 );
@@ -82,9 +85,9 @@ const Schedules = () => (
   <Section
     title="Schedules"
     items={[
-      { href: "#", text: "Sunday - Saturday", className: "hover:underline" },
-      { href: "#", text: "7:30 AM - 10:30 PM", className: "hover:underline" },
-      { href: "#", text: "royal@gmail.com", className: "hover:underline" }
+      { href: "#", text: "Sunday - Saturday", className: "hover:underline no-underline text-slate-500 dark:text-slate-400 font-medium" },
+      { href: "#", text: "7:30 AM - 10:30 PM", className: "hover:underline no-underline text-slate-500 dark:text-slate-400 font-medium" },
+      { href: "#", text: "royal@gmail.com", className: "hover:underline no-underline text-slate-500 dark:text-slate-400 font-medium" }
     ]}
   />
 );

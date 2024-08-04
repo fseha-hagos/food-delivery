@@ -9,7 +9,7 @@ import { Fade, Slide } from 'react-reveal';
 
 function AboutUs() {
   return (
-    <div className="relative bg-custom_background z-1">
+    <div className="relative bg-custom_background z-1 dark:bg-slate-900">
       <Navbar />
           
      
@@ -20,7 +20,7 @@ function AboutUs() {
 
           <div className='about-writing absolute right-0 max-w-[600px] h-[500px] pl-[20px] flex flex-column justify-center'>
             <h2 className='text-[40px] text-left text-custom_primary  '>About Us</h2>
-            <p className='text-[20px] text-custom_sec text-left' >Lorem ipsum, or lipsum as it is sometimes known, 
+            <p className='text-[16px] text-custom_sec dark:text-slate-200 text-left' >Lorem ipsum, or lipsum as it is sometimes known, 
               is dummy text used in laying out print, graphic or web designs. 
               The passage is attributed to an unknown typesetter in the 15th century 
               who is thought to have scrambled parts of Cicero's 

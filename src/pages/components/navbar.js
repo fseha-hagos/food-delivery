@@ -1,10 +1,12 @@
 import React from 'react';
 import logo from '../assets/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
+import { Slide } from 'react-reveal';
 
 const Navbar = () => {
   return (
-    <nav className="bg-slate-200 border-slate-200 dark:bg-slate-900">
+    <Slide down>
+    <nav className="bg-slate-200 border-slate-200 dark:bg-slate-950">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Logo />
         <div className="flex md:order-2">
@@ -15,12 +17,14 @@ const Navbar = () => {
         </div>
         <Menu />
       </div>
-    </nav>
+      </nav>
+      </Slide>
+  
   );
 };
 
 const Logo = () => (
-  <a href="/home" className="flex items-center space-x-3 rtl:space-x-reverse">
+  <a href="/home" className="flex items-center space-x-3 rtl:space-x-reverse no-underline">
     <img src={logo} className="h-10" alt="Royal Delivery Logo" />
     <span className="self-center text-xl font-semibold whitespace-nowrap text-amber-500 dark:text-amber-200 hover:text-slate-900 dark:hover:text-amber-500">
       Royal Delivery
@@ -35,7 +39,7 @@ const AuthButtons = () => {
   <div className="flex items-center">
     <button
       type="button"
-      className="text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm mr-2 px-3 py-1 text-center dark:bg-amber-500 dark:hover:bg-amber-600 dark:focus:ring-amber-800"
+      className="text-slate-900 dark:text-white border-1 border-amber-200 hover:border-amber-600 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm mr-2 px-3 py-1 text-center  dark:hover:bg-amber-600 dark:focus:ring-amber-800"
       onClick={()=>navigate("/login")}
     >
       Log In
@@ -133,7 +137,7 @@ const Menu = () => (
     <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-slate-100 rounded-lg bg-slate-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-slate-900 md:dark:bg-slate-900 dark:border-slate-700">
       {['Home', 'Menu', 'Order Online', 'About', 'Contact'].map((item, index) => (
         <li key={index}>
-          <Link to={`/${item.toLowerCase().replace(' ', '-')}`} className={"block py-2 px-3 text-slate-900 rounded hover:text-amber-500 md:hover:bg-transparent md:hover:text-amber-500 md:p-0 dark:text-amber-200 dark:hover:text-amber-500 md:dark:hover:bg-transparent dark:border-slate-700"}
+          <Link to={`/${item.toLowerCase().replace(' ', '-')}`} className={"block no-underline py-2 px-3 text-slate-900 rounded hover:text-amber-500 md:hover:bg-transparent md:hover:text-amber-500 md:p-0 dark:text-amber-200 dark:hover:text-amber-500 md:dark:hover:bg-transparent dark:border-slate-700"}
           > {item}</Link>
         </li>
       ))}
