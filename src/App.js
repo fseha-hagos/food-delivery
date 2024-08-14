@@ -1,4 +1,4 @@
-
+/*
 import './App.css';
 import AboutUs from './pages/AboutUs';
 import Contact from './pages/Contact';
@@ -43,3 +43,41 @@ function App() {
 }
 
 export default App;
+
+
+*/
+import React from 'react'
+
+import {BrowserRouter as Router,  Routes, Route,} from "react-router-dom"
+import PrivateRoute from "./utils/PrivateRoute"
+import { AuthProvider } from './context/AuthContext'
+
+import Homepage from './views/Homepage'
+import Registerpage from './views/Registerpage'
+import Loginpage from './views/Loginpage'
+import Dashboard from './views/Dashboard'
+import Navbar from './views/Navbar'
+
+
+
+function App() {
+  return (
+    <Router>
+      <AuthProvider>
+        < Navbar/>
+        
+        <Routes>
+         <Route  component={PrivateRoute}  path='/' exact>
+           <Route component={Dashboard} path="/dashboard" exact />
+         </Route>
+         
+          <Route component={Loginpage} path="/login" />
+          <Route component={Registerpage} path="/register" exact />
+          <Route component={Homepage} path="/" exact />
+        </Routes>
+      </AuthProvider>
+    </Router>
+  )
+}
+
+export default App
