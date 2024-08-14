@@ -56,27 +56,46 @@ import Homepage from './views/Homepage'
 import Registerpage from './views/Registerpage'
 import Loginpage from './views/Loginpage'
 import Dashboard from './views/Dashboard'
-import Navbar from './views/Navbar'
+import Navbar from './pages/components/navbar'
+import Footer from './pages/components/footer'
 
+
+
+// <Router>
+// <AuthProvider>
+//   < Navbar/>
+  
+//   <Routes>
+//    <Route  component={PrivateRoute}  path='/' exact>
+//      <Route component={Dashboard} path="/dashboard" exact />
+//    </Route>
+   
+//     <Route component={Loginpage} path="/login" />
+//     <Route component={Registerpage} path="/register" exact />
+//     <Route component={Homepage} path="/" exact />
+//   </Routes>
+// </AuthProvider>
+// </Router>
 
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        < Navbar/>
-        
-        <Routes>
-         <Route  component={PrivateRoute}  path='/' exact>
-           <Route component={Dashboard} path="/dashboard" exact />
-         </Route>
-         
-          <Route component={Loginpage} path="/login" />
-          <Route component={Registerpage} path="/register" exact />
-          <Route component={Homepage} path="/" exact />
-        </Routes>
-      </AuthProvider>
-    </Router>
+   
+     <Router>
+     <AuthProvider>
+       < Navbar/>
+    
+       <Routes>
+ 
+         <Route element={<Loginpage />} path="/login" />
+         <Route path='/dashboard' element={ <PrivateRoute> <Dashboard /> </PrivateRoute> }></Route>
+         <Route element={<Registerpage />} path="/register" exact />
+         <Route element={<Homepage />} path="/" exact />
+       </Routes>
+
+       < Footer/>
+     </AuthProvider>
+   </Router>
   )
 }
 

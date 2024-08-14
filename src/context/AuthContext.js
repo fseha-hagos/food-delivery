@@ -24,10 +24,10 @@ export const AuthProvider = ({ children }) => {
 
     const [loading, setLoading] = useState(true);
 
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const loginUser = async (email, password) => {
-        const response = await fetch("http://127.0.0.1:8000/api/token/", {
+        const response = await fetch("http://127.0.0.1:8000/authentication/token/", {
             method: "POST",
             headers:{
                 "Content-Type":"application/json"
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
             setAuthTokens(data)
             setUser(jwtDecode(data.access))
             localStorage.setItem("authTokens", JSON.stringify(data))
-            history.push("/")
+            navigate("/")
             swal.fire({
                 title: "Login Successful",
                 icon: "success",
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const registerUser = async (email, username, password, password2) => {
-        const response = await fetch("http://127.0.0.1:8000/api/register/", {
+        const response = await fetch("http://127.0.0.1:8000/authentication/register/", {
             method: "POST",
             headers: {
                 "Content-Type":"application/json"
@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }) => {
             })
         })
         if(response.status === 201){
-            history.push("/login")
+            navigate("/login")
             swal.fire({
                 title: "Registration Successful, Login Now",
                 icon: "success",
@@ -110,7 +110,7 @@ export const AuthProvider = ({ children }) => {
         setAuthTokens(null)
         setUser(null)
         localStorage.removeItem("authTokens")
-        history.push("/login")
+        navigate("/login")
         swal.fire({
             title: "YOu have been logged out...",
             icon: "success",

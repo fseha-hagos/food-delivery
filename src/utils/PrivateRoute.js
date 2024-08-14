@@ -1,14 +1,31 @@
 import {Route, Navigate, Outlet} from "react-router-dom"
-import {useContext} from "react"
+import {Component, useContext} from "react"
 import AuthContext from "../context/AuthContext"
 import Loginpage from "../views/Loginpage"
 
 
-const PrivateRoute = ({children, ...rest}) => {
-    let {user} = useContext(AuthContext)
-    return  <Route component={Loginpage} path="/login" />
-   // return <Route {...rest}>{!user ? <Navigate to="/login" /> : children}</Route>
-}
+const PrivateRoute = ({ component: Component, ...rest }) => {
+    console.log("login login")
+    const {user} = useContext(AuthContext)
+   
+
+    if (user) return (
+        <Component {...rest} />
+    )
+    else return <Navigate to="/login" />;
+    
+
+
+    // return (
+    //     <Route
+    //       {...rest}
+    //       render={(props) =>
+    //         user ? <Component {...props} /> : <Navigate to="/login" />
+    //       }
+    //     />
+    //   );
+ 
+};
 
 
 
