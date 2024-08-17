@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Fade } from 'react-reveal';
 
 const Navbar = () => {
@@ -8,17 +8,13 @@ const Navbar = () => {
   const [searchOpen, setSearchOpen] = useState(false);
 
   const handleMenuToggle = () => {
-    setMenuOpen(!menuOpen);
-    if (searchOpen) {
-      setSearchOpen(false);
-    }
+    setMenuOpen(prev => !prev);
+    if (searchOpen) setSearchOpen(false);
   };
 
   const handleSearchToggle = () => {
-    setSearchOpen(!searchOpen);
-    if (menuOpen) {
-      setMenuOpen(false);
-    }
+    setSearchOpen(prev => !prev);
+    if (menuOpen) setMenuOpen(false);
   };
 
   return (
@@ -28,8 +24,8 @@ const Navbar = () => {
           <Logo />
           <div className="flex md:order-2">
             <AuthButtons />
-            <SearchToggle onClick={handleSearchToggle} isOpen={searchOpen} />
-            <MenuToggle onClick={handleMenuToggle} isOpen={menuOpen} />
+            <ToggleButton onClick={handleSearchToggle} isOpen={searchOpen} icon="search" ariaControls="search-input" ariaExpanded={searchOpen} />
+            <ToggleButton onClick={handleMenuToggle} isOpen={menuOpen} icon="menu" ariaControls="navbar-menu" ariaExpanded={menuOpen} />
           </div>
           <SearchInput isOpen={searchOpen} />
           <Menu isOpen={menuOpen} />
@@ -53,37 +49,51 @@ const AuthButtons = () => {
 
   return (
     <div className="flex items-center">
-      <button
-        type="button"
-        className="text-slate-900 dark:text-white border-2 border-amber-200 hover:border-amber-600 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm mr-2 px-3 py-1 text-center dark:hover:bg-amber-600 dark:focus:ring-amber-800 transition duration-200 ease-in-out"
-        onClick={() => navigate("/login")}
-      >
-        Log In
-      </button>
+      <Fade right>
+        <Button onClick={() => navigate('/signup')} label="Sign up" />
+        <Button label="Log in" />
+      </Fade>
     </div>
   );
 };
 
-const SearchToggle = ({ onClick, isOpen }) => (
+const Button = ({ onClick, label }) => (
   <button
     type="button"
-    className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-amber-500 rounded-lg md:hidden hover:text-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:text-amber-200 dark:hover:text-amber-500 dark:focus:ring-amber-200 transition duration-200 ease-in-out"
     onClick={onClick}
-    aria-controls="search-input"
-    aria-expanded={isOpen}
+    className="text-slate-900 dark:text-amber-300 hover:text-black border-2 border-amber-300 hover:border-amber-600 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm mr-2 px-3 py-1 text-center dark:focus:ring-amber-800 transition duration-200 ease-in-out"
   >
-    <span className="sr-only">Search</span>
-    <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-      />
-    </svg>
+    {label}
   </button>
 );
+
+const ToggleButton = ({ onClick, isOpen, icon, ariaControls, ariaExpanded }) => {
+  const icons = {
+    search: (
+      <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+      </svg>
+    ),
+    menu: (
+      <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
+      </svg>
+    ),
+  };
+
+  return (
+    <button
+      type="button"
+      className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-amber-500 rounded-lg md:hidden hover:text-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:text-amber-200 dark:hover:text-amber-500 dark:focus:ring-amber-200 transition duration-200 ease-in-out"
+      onClick={onClick}
+      aria-controls={ariaControls}
+      aria-expanded={ariaExpanded}
+    >
+      <span className="sr-only">{icon === 'search' ? 'Search' : 'Open main menu'}</span>
+      {icons[icon]}
+    </button>
+  );
+};
 
 const SearchInput = ({ isOpen }) => (
   <div
@@ -98,27 +108,6 @@ const SearchInput = ({ isOpen }) => (
       />
     </div>
   </div>
-);
-
-const MenuToggle = ({ onClick, isOpen }) => (
-  <button
-    type="button"
-    className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-amber-500 rounded-lg md:hidden hover:text-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:text-amber-200 dark:hover:text-amber-500 dark:focus:ring-amber-200 transition duration-200 ease-in-out"
-    onClick={onClick}
-    aria-controls="navbar-menu"
-    aria-expanded={isOpen}
-  >
-    <span className="sr-only">Open main menu</span>
-    <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M1 1h15M1 7h15M1 13h15"
-      />
-    </svg>
-  </button>
 );
 
 const Menu = ({ isOpen }) => (
