@@ -10,6 +10,8 @@ import { CiCircleChevLeft } from "react-icons/ci";
 import { CiCircleChevRight } from "react-icons/ci";
 import { Fade, Slide, Bounce } from 'react-reveal';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { BACKEND_BASE_URL } from '../context/constants';
 
 const menuItems = [
   { text: 'All', className: 'menu-btn-all' },
@@ -25,21 +27,87 @@ const menuItems = [
   { text: 'Alcoholic Beverages', className: 'menu-btn-alcoholic-beverages' }
 ];
 
-const MenuList = () => {
+const MenuList = ({catagoryLists}) => {
   return (
     <div className='menu-list'>
-      {menuItems.map((item) => (
+      {catagoryLists.map((item, index) => (
         <Link
-          key={item.className}
-          className={`button text-amber-300 no-underline hover:text-amber-600 ${item.className}`}
+          key={index}
+          className={`button text-amber-300 no-underline hover:text-amber-600 `}
         >
-          {item.text}
+          {item.catagory_name}
         </Link>
       ))}
     </div>
   );
 };
 function MenuRecipe() {
+
+  const [catagoryLists, setCatagoryLists] = useState([{}]);
+  const [latestItems, setLatestItems] = useState([{}]);
+
+  useEffect(
+    ()=>{
+      getCatagoryItems()
+      getLatestItems()
+    }
+  , [])
+
+
+  const getCatagoryItems = async () => {
+    try{
+      let response = fetch(
+        BACKEND_BASE_URL+"/catagory");
+            
+        // FetchRes is the promise to resolve
+        // it by using.then() method
+        response.then(res =>
+            res.json()).then(d => {
+              setCatagoryLists(d)
+              console.log("catgory loaded succesfully");
+              console.log(d)
+            });
+    }catch{
+      console.log("(MenuRecipe.js) === there was a server issue");
+    }
+  }
+ 
+  const getLatestItems = async () => {
+    try{
+      let response = fetch(
+        BACKEND_BASE_URL+"/menu");
+            
+        // FetchRes is the promise to resolve
+        // it by using.then() method
+        response.then(res =>
+            res.json()).then(d => {
+              setLatestItems(d)
+              console.log("menus loaded succesfully");
+              console.log(d)
+            });
+    }catch{
+      console.log("there was a server issue");
+    }
+  }
+  // const getLatestItems = async() => {
+  //   try {
+
+  //       let response = fetch(BACKEND_BASE_URL + "/menu");
+
+  //       response.then(
+  //         res => res.json()
+  //       ).then(
+  //         d => {
+  //           setLatestItems(d);
+  //           console.log("menus loaded succesfully");
+  //           console.log(d);}
+  //       );
+
+  //     }catch{
+  //       console.log("(MenuRecipe.js)===there is an error in quering menus")
+  //     }
+
+  // }
   return (
     <div className="bg bg-custom_background dark:bg-slate-900">
       <Navbar />
@@ -61,26 +129,40 @@ function MenuRecipe() {
           <hr className='menu-hr border-white w-24 mx-2' />
         </h2>
         <Fade up>
-        <MenuList />
+        <MenuList catagoryLists = {catagoryLists}/>
         </Fade>
       </div>
 
 
       <div className='menu-wrapper'>
-        <Fade up delay={100} >
-        <RecipeRProductCard />
-        <RecipeRProductCard />
-        <RecipeRProductCard />
-        <RecipeRProductCard />
-        <RecipeRProductCard />
-        <RecipeRProductCard />
-        <RecipeRProductCard />
-        <RecipeRProductCard />
-        <RecipeRProductCard />
-        <RecipeRProductCard />
-        <RecipeRProductCard />
-        <RecipeRProductCard />
-</Fade>
+      {
+              latestItems.map((item,index) => (
+                <RecipeRProductCard item ={item}/>
+              ))
+            }
+      {
+              latestItems.map((item,index) => (
+                <RecipeRProductCard item ={item}/>
+              ))
+            }
+      {
+              latestItems.map((item,index) => (
+                <RecipeRProductCard item ={item}/>
+              ))
+            }
+            
+       
+           
+                
+                
+               
+               
+    
+            
+         
+        
+       
+
 
       </div>
       <div className='menu-botm-nav'>

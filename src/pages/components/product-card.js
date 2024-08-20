@@ -1,15 +1,21 @@
 import React from 'react';
 import '../styles/components.css'
+import { BACKEND_BASE_URL } from '../../context/constants';
 
 import {
-    Link
+    Link,
+    Navigate,
+    useNavigate
 } from 'react-router-dom';
-//id
-//href
-//imageAlt
-//imageSrc
-//name
-//price
+
+  // menu_id = models.CharField(max_length=8, default=generate_unique_code, unique=True)
+  // #catagory_id = models.OneToOneField(Catagory, on_delete=models.SET_NULL, null=True)
+  // catagory_id = models.ForeignKey(Catagory, on_delete=models.SET_NULL, null=True)
+  // item_name = models.CharField(max_length=100)
+  // image = models.ImageField(upload_to="item-images", default="default.jpg")
+  // description =models.TextField()
+  // price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+  // availability
 
 const products = [
     {
@@ -79,8 +85,10 @@ const products = [
 ]
     
 function ProductCard(props ) {
-    const { product } = props;
-    console.log(product);
+
+    const navigate = useNavigate();
+    const { item } = props;
+    console.log(item);
     return (
         <div>
             {
@@ -99,19 +107,22 @@ function ProductCard(props ) {
         </div>
 */
 
-<a key={product.id} href={product.href} className="group">
+<a key={item.id} href={item.href} className="group">
 <div className="  aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 ">
   <img
-    alt={product.imageAlt}
-    src={product.imageSrc}
+    alt={item.item_name}
+    src={BACKEND_BASE_URL+item.image}
     className="h-full w-full object-cover object-center group-hover:opacity-75"
   />
 </div>
 <div className='card-content py-[3px] w-[330px] sm:w-[260px] mx-auto  px-[20px] sm:px-[5px] mt-[17px]'>  
-            <Link to="/recipe"  className='order w-[90px] px-[4px] py-[4px] no-underline rounded-[16px] text-center float-left text-[17px] font-[500] '><span>Order</span></Link>
+            <div onClick={() =>  navigate('/recipe',{state:item})} className='order w-[90px] px-[4px] py-[4px] no-underline rounded-[16px] text-center float-left text-[17px] font-[500] '><span>Orderr</span></div>
+           
+            {/* <Link to={{ pathname: '/recipe', state: { id: 1, name: 'sabaoon', shirt: 'green' } }}>Learn More</Link> */}
+            {/* <Link to="/recipe"  className='order w-[90px] px-[4px] py-[4px] no-underline rounded-[16px] text-center float-left text-[17px] font-[500] '><span>Order</span></Link> */}
                 <div className='title-container  text-right float-right'> 
-                    <p className='title font-[600] text-[20px] rounded-[16px]'>{product.name}</p>
-                    <p className='price font-[600] text-[17px] rounded-[16px]'>{product.price} birr</p>
+                    <p className='title font-[600] text-[20px] rounded-[16px]'>{item.item_name}</p>
+                    <p className='price font-[600] text-[17px] rounded-[16px]'>{item.price} birr</p>
                 </div>
             </div>
 </a>

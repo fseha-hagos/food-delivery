@@ -65,6 +65,7 @@ import MenuRecipe from './pages/MenuRecipe';
 import OrderOnline from './pages/OrderOnline';
 import RecipeDetail from './pages/RecipeDetail';
 import SignUp from './pages/SignUp';
+import { CartProvider } from './context/cartContext'
 
 
 
@@ -74,9 +75,9 @@ function App() {
      <Router>
      <AuthProvider>
       
-    
+     <CartProvider>
        <Routes>
-                   <Route path='/home' element={ <PrivateRoute> <Home /> </PrivateRoute> }></Route>
+                  
                    <Route path="/"
                         element={<Home />} />
                     <Route path="/home"
@@ -93,6 +94,8 @@ function App() {
                         element={<SignUp />} />
                     <Route path="/contact"
                         element={<Contact />} />
+
+                   {/* <Route path='/home' element={ <PrivateRoute> <Home /> </PrivateRoute> }></Route> */}
  
             {/*  
          <Route element={<Loginpage />} path="/login" />
@@ -103,7 +106,7 @@ function App() {
 */}
 
 </Routes>
-       
+</CartProvider>
      </AuthProvider>
    </Router>
   )

@@ -7,6 +7,7 @@ import Footer from './components/footer';
 import { Fade } from 'react-reveal';
 import { useEffect, useState } from 'react';
 import MyCarousel from './components/my-carousel';
+import { BACKEND_BASE_URL } from '../context/constants';
 
 
 const products = [
@@ -77,8 +78,34 @@ const products = [
 ]
 
 function Home() {
+ 
+  const [latestItems, setLatestItems] = useState([]);
 
+  useEffect(
+    ()=>{
+      getLatestItems()
+    }
+  , [])
 
+ 
+  const getLatestItems = async () => {
+    try{
+      let response = fetch(BACKEND_BASE_URL+"/menu");
+            
+        // FetchRes is the promise to resolve
+        // it by using.then() method
+        response.then(
+          res => res.json()).then(
+            d => {
+              setLatestItems(d)
+              console.log("menus loaded succesfully");
+              console.log(d)
+            });
+    }catch{
+      console.log("there was a server issue");
+    }
+
+}
   return (
     <div className='relative bg-custom_background dark:bg-slate-900 z-1'>
 
@@ -133,8 +160,9 @@ function Home() {
           <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
             <h2 className="sr-only">Products</h2>
             <div className='relative grid grid-cols-1 gap-x-20 gap-y-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8   z-3'>
-              {products.map((item, index) => (
-                <ProductCard product={item} />
+              {latestItems.map((item, index) => (
+                
+                <ProductCard item={item} />
               ))}
 
             </div>

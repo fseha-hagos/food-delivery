@@ -14,12 +14,15 @@ export const AuthProvider = ({ children }) => {
             : null
     );
     
-
     const [user, setUser] = useState(() => 
         localStorage.getItem("authTokens")
             ? jwtDecode(localStorage.getItem("authTokens"))
             : null
     );
+
+
+    const [cart, setCart] = useState([]);
+    
 
 
     const [loading, setLoading] = useState(true);
