@@ -1,38 +1,42 @@
-import React, { useState } from 'react';
-import { CiUser } from "react-icons/ci";
-import { PiLockKey } from 'react-icons/pi';
+import React, { useEffect, useRef, useState } from 'react';
+import ReactDOM from 'react-dom';
+import { Fade, Zoom } from 'react-reveal';
 
-function Login(props) {
-    const [email, setEmail] = useState("");
-    const [password,setPassword] = useState(null);
+const Login = ({ isOpen, onClose, children }) => {
+  const loginRef = useRef();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setEmail(e.email);
-        setPassword(e.password);
-        alert(`The email you entered is: ${email}`)
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (loginRef.current && !loginRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
     }
-    return (
-       <div className='login-container'>
-        <span className='left-box-bg'></span>
-        <span className='right-box-bg'></span>
-       
-        <form onSubmit={handleSubmit}>
-                       
-                    
-                    <div className='input-con'><span><CiUser /></span><input type="text" name='email' placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
 
-                    <div className='input-con'><span><PiLockKey /></span><input type="password" name='password' placeholder={"password"} value={password} onChange={(e) => setPassword(e.target.value)} />
-                    </div>
-                    <span>Forgot password?</span>
-                    <input type="submit" name='submit' value={"Login"}/>
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen, onClose]);
 
-               </form>
-               <div className='l-signup'>Don't have an account?<a href='/'>SignUp</a></div>
-       </div>
+  if (!isOpen) return null;
 
-    );
-}
+  return ReactDOM.createPortal(
+    <div className="fixed top-0 left-0 w-full h-full bg-slate-900/50 items-center justify-center z-1000">
+     <Zoom out delay={100}>
+      <div className='flex items-center justify-center h-screen w-screen'>
+      <div className="bg-amber-600/90 p-3 rounded shadow-lg w-25 max-w-100%" ref={loginRef}>
+        {children}
+      </div>
+      </div>
+      </Zoom>
+    </div>,
+    document.body
+  );
+};
 
 export default Login;
