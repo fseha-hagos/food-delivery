@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Fade } from 'react-reveal';
+import { Fade, Zoom } from 'react-reveal';
+import Login from './login';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -36,25 +37,54 @@ const Navbar = () => {
 };
 
 const Logo = () => (
+  <Fade left>
   <a href="/home" className="flex items-center space-x-3 rtl:space-x-reverse no-underline">
     <img src={logo} className="h-10" alt="Royal Delivery Logo" />
     <span className="self-center text-xl font-semibold whitespace-nowrap text-amber-500 dark:text-amber-200 hover:text-slate-900 dark:hover:text-amber-500">
       Royal Delivery
     </span>
   </a>
+  </Fade>
 );
 
 const AuthButtons = () => {
+
   const navigate = useNavigate();
+  const [isLogInOpen, setIsLogInOpen] = useState(false);
+
+  const toggleLogIn = () => {
+    setIsLogInOpen(!isLogInOpen);
+  };
 
   return (
     <div className="flex items-center">
-      <Fade right>
-        <Button onClick={() => navigate('/signup')} label="Sign up" />
-        <Button label="Log in" />
-      </Fade>
+      <Button onClick={() => navigate('/signup')} label="Sign up" />
+      <Button onClick={toggleLogIn} label="Log in" />
+      <Login isOpen={isLogInOpen} onClose={() => setIsLogInOpen(false)}>  
+        <h3 className='text-slate-900 text-center' >Log in</h3>
+        <form>
+          <div className="mb-3">
+            <label className="block text-sm font-medium text-slate-800">Email</label>
+            <input type="email" className="mt-1 block w-full p-2 bg-slate-300  rounded-md" />
+          </div>
+          <div className="mb-5">
+          <label className="block text-sm font-medium text-slate-800">Password</label>
+          <input type="password" className="mt-1 block w-full p-2 bg-slate-300 rounded-md" />
+          </div>
+          <input
+              type="submit"
+              name="submit"
+              value="Log in"
+              className="w-full p-2 border-2 border-slate-900 text-slate-900 hover:text-white rounded-lg hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 transition duration-300"
+            />      
+            </form>
+        <div className='text-center text-slate-900 my-3'>Create new account? 
+          <a href='/signup' className='no-underline text-slate-200 hover:text-slate-950' > Sign up</a>
+          </div>
+      </Login>
     </div>
   );
+
 };
 
 const Button = ({ onClick, label }) => (
