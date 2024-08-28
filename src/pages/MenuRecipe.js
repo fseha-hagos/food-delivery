@@ -43,8 +43,8 @@ const MenuList = ({catagoryLists}) => {
 };
 function MenuRecipe() {
 
-  const [catagoryLists, setCatagoryLists] = useState([{}]);
-  const [latestItems, setLatestItems] = useState([{}]);
+  const [catagoryLists, setCatagoryLists] = useState([]);
+  const [latestItems, setLatestItems] = useState([]);
 
   useEffect(
     ()=>{
@@ -74,8 +74,7 @@ function MenuRecipe() {
  
   const getLatestItems = async () => {
     try{
-      let response = fetch(
-        BACKEND_BASE_URL+"/menu");
+      let response = fetch(BACKEND_BASE_URL+"/menu");
             
         // FetchRes is the promise to resolve
         // it by using.then() method
@@ -135,33 +134,10 @@ function MenuRecipe() {
 
 
       <div className='menu-wrapper'>
-      {
-              latestItems.map((item,index) => (
-                <RecipeRProductCard item ={item}/>
-              ))
-            }
-      {
-              latestItems.map((item,index) => (
-                <RecipeRProductCard item ={item}/>
-              ))
-            }
-      {
-              latestItems.map((item,index) => (
-                <RecipeRProductCard item ={item}/>
-              ))
-            }
-            
-       
-           
+      {latestItems.map((item, index) => (
                 
-                
-               
-               
-    
-            
-         
-        
-       
+                <RecipeRProductCard item={item} />
+              ))}
 
 
       </div>

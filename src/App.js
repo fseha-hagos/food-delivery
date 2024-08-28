@@ -66,6 +66,9 @@ import OrderOnline from './pages/OrderOnline';
 import RecipeDetail from './pages/RecipeDetail';
 import SignUp from './pages/SignUp';
 import { CartProvider } from './context/cartContext'
+import Login from './pages/Login'
+import MyCartPage from './pages/MyCartPage'
+import PaymentPage from './pages/PaymentPage'
 
 
 
@@ -76,6 +79,7 @@ function App() {
      <AuthProvider>
       
      <CartProvider>
+   
        <Routes>
                   
                    <Route path="/"
@@ -91,9 +95,15 @@ function App() {
                     <Route path="/about"
                         element={<AboutUs />} />
                     <Route path="/login"
+                        element={<Login />} />
+                    <Route path="/signup"
                         element={<SignUp />} />
                     <Route path="/contact"
                         element={<Contact />} />
+                    <Route path="/mycart"
+                        element={<MyCartPage />} />
+                    <Route path="/payment"
+                        element={<PaymentPage />} />
 
                    {/* <Route path='/home' element={ <PrivateRoute> <Home /> </PrivateRoute> }></Route> */}
  
@@ -106,6 +116,7 @@ function App() {
 */}
 
 </Routes>
+
 </CartProvider>
      </AuthProvider>
    </Router>

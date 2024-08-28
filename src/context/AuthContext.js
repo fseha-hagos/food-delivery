@@ -38,7 +38,9 @@ export const AuthProvider = ({ children }) => {
             body: JSON.stringify({
                 email, password
             })
+
         })
+        console.log("response",response);
         const data = await response.json()
         console.log(data);
 
@@ -47,7 +49,7 @@ export const AuthProvider = ({ children }) => {
             setAuthTokens(data)
             setUser(jwtDecode(data.access))
             localStorage.setItem("authTokens", JSON.stringify(data))
-            navigate("/")
+            //navigate("/")
             swal.fire({
                 title: "Login Successful",
                 icon: "success",
@@ -58,6 +60,7 @@ export const AuthProvider = ({ children }) => {
                 showConfirmButton: false,
             })
 
+           
         } else {    
             console.log(response.status);
             console.log("there was a server issue");
@@ -70,7 +73,10 @@ export const AuthProvider = ({ children }) => {
                 timerProgressBar: true,
                 showConfirmButton: false,
             })
+           
         }
+
+        
     }
 
     const registerUser = async (email, username, password, password2) => {

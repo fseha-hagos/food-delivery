@@ -2,21 +2,34 @@ import '@fontsource/lily-script-one';
 import './styles/home.css';
 import Navbar from "./components/navbar";
 import Footer from './components/footer';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import AuthContext from '../context/AuthContext';
+import { Link, useNavigate } from 'react-router-dom';
 
 function SignUp() {
+ 
+  const navigation = useNavigate();
+  const {user} = useContext(AuthContext);
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
+
+  const {registerUser} = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`The name you entered is: ${name}`);
+    registerUser(email,name,password,password2)
+  
   };
 
   return (
+    <>
+    {
+      !user ?
     <div className="bg-custom_background dark:bg-slate-900 min-h-screen flex flex-col">
-      <Navbar />
+     
 
       <div className="flex flex-col md:flex-row items-center justify-center flex-grow px-4 py-8 md:px-8 md:py-12">
         <div className="md:w-1/2 lg:w-1/3 flex justify-center mb-8 md:mb-0">
@@ -52,6 +65,14 @@ function SignUp() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password2}
+              onChange={(e) => setPassword2(e.target.value)}
               className="w-full p-3 mb-5 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
             />
             <input
@@ -74,15 +95,20 @@ function SignUp() {
           </form>
           <div className="mt-6 text-center text-slate-300">
             Already have an account?{' '}
-            <a href="/login" className="text-amber-500 hover:text-amber-700">
+            <Link to="/login" className="text-amber-500 hover:text-amber-700">
               Log In
-            </a>
+            </Link>
           </div>
         </div>
       </div>
 
-      <Footer />
+    
     </div>
+    :
+    navigation("/home")
+
+    }
+    </>
   );
 }
 

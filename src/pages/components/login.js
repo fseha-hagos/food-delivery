@@ -1,13 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import ReactDOM from 'react-dom';
+
 import { Fade, Zoom } from 'react-reveal';
+
+
 
 const Login = ({ isOpen, onClose, children }) => {
   const loginRef = useRef();
 
+  
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (loginRef.current && !loginRef.current.contains(event.target)) {
+       
         onClose();
       }
     };
