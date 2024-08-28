@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import logo from '../assets/logo.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Fade, Zoom } from 'react-reveal';
 import Login from './login';
+import AuthContext from '../../context/AuthContext';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const {user, logoutUser} = useContext(AuthContext);
 
   const handleMenuToggle = () => {
     setMenuOpen(prev => !prev);
@@ -52,24 +54,47 @@ const AuthButtons = () => {
   const navigate = useNavigate();
   const [isLogInOpen, setIsLogInOpen] = useState(false);
 
+  const {user, loginUser, logoutUser} = useContext(AuthContext);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const handleLogout = (event) => {
+   
+    logoutUser()
+  
+  };
+
+  const onSubmitLogin = (event) =>{
+    event.preventDefault();
+    loginUser(email,password)
+    setIsLogInOpen(false)
+    
+  }
+
+
   const toggleLogIn = () => {
     setIsLogInOpen(!isLogInOpen);
   };
 
   return (
     <div className="flex items-center">
-      <Button onClick={() => navigate('/signup')} label="Sign up" />
-      <Button onClick={toggleLogIn} label="Log in" />
+      {
+        user ? (<Button onClick={ handleLogout} label="Log out" />) 
+               :(<><Button onClick={() => navigate('/signup')} label="Sign up" /><Button onClick={toggleLogIn} label="Log in" /></>)
+      
+    }
       <Login isOpen={isLogInOpen} onClose={() => setIsLogInOpen(false)}>  
         <h3 className='text-slate-900 text-center' >Log in</h3>
-        <form>
+        <form onSubmit={onSubmitLogin}>
           <div className="mb-3">
             <label className="block text-sm font-medium text-slate-800">Email</label>
-            <input type="email" className="mt-1 block w-full p-2 bg-slate-300  rounded-md" />
+            <input type="email" className="mt-1 block w-full p-2 bg-slate-300  rounded-md" onChange={(e) => setEmail(e.target.value)}/>
           </div>
           <div className="mb-5">
           <label className="block text-sm font-medium text-slate-800">Password</label>
-          <input type="password" className="mt-1 block w-full p-2 bg-slate-300 rounded-md" />
+          <input type="password" className="mt-1 block w-full p-2 bg-slate-300 rounded-md" onChange={(e) => setPassword(e.target.value)}/>
           </div>
           <input
               type="submit"

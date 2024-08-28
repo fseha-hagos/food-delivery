@@ -17,6 +17,15 @@ import {useContext, createContext, useEffect, useState} from 'react'
 //     refreshCart?: () => Promise<void | any>;
 //     likedProducts?: myProductsFromDatabasePeopsWithId[];
 // }
+// availability: true
+// catagory_id: 2
+// color: undefined
+// description: "wewewe"
+// image: "/media/item-images/b24f613f-72e8-475c-bc59-98a95383cf3c31.jpg"
+// item_name: "wewewe"
+// menu_id: "XFTBMY"
+// price: "45.43"
+// totalPurchase: undefined
 
 //const TOKEN_KEY = 'my-jwt';
 //export const API_URL = 'https://api.developbetterapps.com';
@@ -28,7 +37,12 @@ export const useCartAuth = () => {
 
 export const CartProvider = ({children})=>{
 
-    const [carts, setCarts] = useState([])
+    const [carts, setCarts] = useState(() =>
+        localStorage.getItem("carts")
+            ? JSON.parse(localStorage.getItem("carts")) : []
+            
+    );
+    console.log("carts----------", carts)
     const [totalPrice, setTotalPrice] = useState(0);
     const [likedProducts, setLikedProducts] = useState([])
 
@@ -40,12 +54,13 @@ export const CartProvider = ({children})=>{
     },[totalPrice,carts])
 
     const loadCartItems = async () => {
-        let getCarts = localStorage.getItem("carts");
+        let getCarts =  localStorage.getItem("carts");
         // let getCarts = await AsyncStorage.getItem("carts");
-         let savedCarts = getCarts ? JSON.parse(getCarts) : [];
+        let savedCarts = getCarts ? JSON.parse(getCarts) : [];
         setCarts(savedCarts)
-        totalSum(savedCarts)
-        //console.log("getCarts : ",getCarts)
+        //totalSum(savedCarts)
+        console.log("getCarts : ",getCarts)
+        console.log("getCarts : ",carts)
     }
     const loadLikedItems = async () => {
         let getLiked = localStorage.getItem("liked-products");
@@ -88,21 +103,22 @@ export const CartProvider = ({children})=>{
         setCarts(newItems)
         totalSum(newItems);
     }
-    const refreshCart = async () => {
-        loadCartItems();
-        loadLikedItems();
-    }
+    // const refreshCart = async () => {
+    //     loadCartItems();
+    //     loadLikedItems();
+    // }
 
     const onAddToCart = async (item) => {
-        const itemExists = carts.findIndex((cart) => cart.id === item.id);
+        await loadCartItems()
+        const itemExists = carts.findIndex((cart) => cart.menu_id === item.menu_id);
         if(itemExists !== -1){
             const updatedCarts = [...carts];
             updatedCarts[itemExists].totalPurchase = (item.totalPurchase); // Add 1 to quantity
             updatedCarts[itemExists].color = (item.color ); // Add 1 to quantity
 
-      localStorage.setItem("carts", JSON.stringify(updatedCarts))
+        localStorage.setItem("carts", JSON.stringify(updatedCarts))
     //   await AsyncStorage.setItem("carts", JSON.stringify(updatedCarts));
-      setCarts(updatedCarts);
+         setCarts(updatedCarts);
       totalSum(updatedCarts);
         }
        else{
@@ -113,7 +129,7 @@ export const CartProvider = ({children})=>{
        totalSum(newCarts)
        }
         
-console.log(" item--------- : ",item)
+console.log(" cart item--------- : ",carts.length)
        // return Promise.resolve();
     }
 
@@ -124,7 +140,7 @@ console.log(" item--------- : ",item)
         deleteFromCart,
         likedProducts,
         handleLiked,
-        refreshCart,
+        //refreshCart,
     };
 
     return (
