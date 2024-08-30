@@ -39,7 +39,7 @@ export const CartProvider = ({children})=>{
 
     const [carts, setCarts] = useState(() =>
         localStorage.getItem("carts")
-            ? JSON.parse(localStorage.getItem("carts")) : []
+            ? JSON.parse(localStorage.getItem("carts")) : [{}]
             
     );
     console.log("carts----------", carts)
@@ -56,7 +56,7 @@ export const CartProvider = ({children})=>{
     const loadCartItems = async () => {
         let getCarts =  localStorage.getItem("carts");
         // let getCarts = await AsyncStorage.getItem("carts");
-        let savedCarts = getCarts ? JSON.parse(getCarts) : [];
+        let savedCarts = getCarts ? JSON.parse(getCarts) : [{}];
         setCarts(savedCarts)
         //totalSum(savedCarts)
         console.log("getCarts : ",getCarts)
@@ -108,28 +108,42 @@ export const CartProvider = ({children})=>{
     //     loadLikedItems();
     // }
 
+    const onCartOrderConfirmed = async () => {
+        //localStorage.setItem("carts", null)
+    //   await AsyncStorage.setItem("carts", JSON.stringify(updatedCarts));
+        setCarts(null);
+        localStorage.setItem("carts", JSON.stringify(carts))
+        
+    }
     const onAddToCart = async (item) => {
         await loadCartItems()
+        if (carts === null) {
+            const newCarts = [item]
+            localStorage.setItem("carts", JSON.stringify(newCarts))
+            // await AsyncStorage.setItem("carts",JSON.stringify(newCarts))
+            setCarts(newCarts);
+            totalSum(newCarts)
+            return
+        }
         const itemExists = carts.findIndex((cart) => cart.menu_id === item.menu_id);
         if(itemExists !== -1){
             const updatedCarts = [...carts];
             updatedCarts[itemExists].totalPurchase = (item.totalPurchase); // Add 1 to quantity
             updatedCarts[itemExists].color = (item.color ); // Add 1 to quantity
-
-        localStorage.setItem("carts", JSON.stringify(updatedCarts))
-    //   await AsyncStorage.setItem("carts", JSON.stringify(updatedCarts));
-         setCarts(updatedCarts);
-      totalSum(updatedCarts);
+            localStorage.setItem("carts", JSON.stringify(updatedCarts))
+            //await AsyncStorage.setItem("carts", JSON.stringify(updatedCarts));
+            setCarts(updatedCarts);
+            totalSum(updatedCarts);
         }
        else{
-        const newCarts = [...carts , item]
-        localStorage.setItem("carts", JSON.stringify(newCarts))
-        // await AsyncStorage.setItem("carts",JSON.stringify(newCarts))
-       setCarts(newCarts);
-       totalSum(newCarts)
+            const newCarts = [...carts , item]
+            localStorage.setItem("carts", JSON.stringify(newCarts))
+            // await AsyncStorage.setItem("carts",JSON.stringify(newCarts))
+            setCarts(newCarts);
+            totalSum(newCarts)
        }
         
-console.log(" cart item--------- : ",carts.length)
+       console.log(" cart item--------- : ",carts.length)
        // return Promise.resolve();
     }
 
@@ -140,6 +154,7 @@ console.log(" cart item--------- : ",carts.length)
         deleteFromCart,
         likedProducts,
         handleLiked,
+        onCartOrderConfirmed
         //refreshCart,
     };
 
