@@ -6,8 +6,9 @@ import Contact from './components/contact';
 import Footer from './components/footer';
 import { Fade } from 'react-reveal';
 import { useEffect, useState } from 'react';
-import MyCarousel from './components/my-carousel';
 import { BACKEND_BASE_URL } from '../context/constants';
+import homeImage from './assets/home-1.png';
+import foodImage from './assets/image-2.jpg';
 
 
 const products = [
@@ -77,73 +78,123 @@ const products = [
   },
 ]
 
+const FoodImage = ({ src }) => {
+  return (
+    <Fade bottom cascade>
+      <img
+        src={src}
+        alt="Food"
+        className="animate-wander absolute w-25 h-auto rounded-full transition-transform"
+      />
+    </Fade>
+  );
+};
+
+
 function Home() {
- 
+
   const [latestItems, setLatestItems] = useState([]);
 
   useEffect(
-    ()=>{
+    () => {
       getLatestItems()
     }
-  , [])
+    , [])
 
- 
+
   const getLatestItems = async () => {
-    try{
-      let response = fetch(BACKEND_BASE_URL+"/menu");
-            
-        // FetchRes is the promise to resolve
-        // it by using.then() method
-        response.then(
-          res => res.json()).then(
-            d => {
-              setLatestItems(d)
-              console.log("menus loaded succesfully");
-              console.log(d)
-            });
-    }catch{
+    try {
+      let response = fetch(BACKEND_BASE_URL + "/menu");
+
+      // FetchRes is the promise to resolve
+      // it by using.then() method
+      response.then(
+        res => res.json()).then(
+          d => {
+            setLatestItems(d)
+            console.log("menus loaded succesfully");
+            console.log(d)
+          });
+    } catch {
       console.log("there was a server issue");
     }
 
-}
+  }
   return (
-    <div className='relative bg-custom_background dark:bg-slate-900 z-1'>
+    <div className='relative bg-custom_background dark:bg-slate-900'>
 
       <div className="w-full h-screen mx-auto bg-pinkSoft">
         <Navbar />
-        <div className='h-[490px] w-[100%]'>
 
-          <MyCarousel />
+        <div className='sm:block md:flex '>
+          <Fade up delay={100}>
+            <div className='p-[5%]  w-1/2'>
+              <div className='text-slate-200 font-bold text-7xl '>From Our Kitchen</div>
+              <div className='text-amber-500 font-bold text-6xl mb-[10%]'>to Your Table</div>
+              <p className='text-left text-base  text-slate-900 dark:text-slate-300'>
+                There are many variations of passages of Lorem Ipsum available,
+                but the majority have suffered alteration in some form, by injected
+                humour, or randomised words which don't look even slightly believable.
+              </p>
+              <div className='flex'>
+              <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-4 py-1 px-4 rounded-full text-lg hover:text-slate-900 hover:bg-amber-500 '>Order Now</button>
+              <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-4 py-1 px-4 ml-[15%]  rounded-full text-lg hover:text-slate-900 hover:bg-amber-500 '>Sign Up</button>
+</div>
+            </div>
+          </Fade>
+          <Fade right delay={100}>
+            <div className='w-1/2 relative mr-[5%]' >
+              <img src={homeImage} alt="Chef" className='absolute opacity-75 w-[55%] top-5 right-[15%] transition-transform ' />
+              <div className='flex items-center'>
+                <a href='#' className='cursor-pointer '>
+                  <img src={foodImage} alt="Food"
+                       className="animate-wander absolute  w-[24%] h-auto rounded-full transition-transform left-[10%] top-[50%]" />
+                </a>
+                <a href='#' className='cursor-pointer'>
+                  <img src={foodImage} alt="Food"
+                    className="animate-wander absolute w-[24%] h-auto rounded-full transition-transform left-[45%] top-[75%]"
+                  />
+                </a>
+                <a href='#' className='cursor-pointer'>
+                  <img
+                    src={foodImage} alt="Food"
+                    className="animate-wander absolute w-[24%] h-auto rounded-full transition-transform left-[80%] top-[50%]"
+                  />
+                </a>
+              </div>
+            </div>
+          </Fade>
         </div>
-
       </div>
 
 
       <Fade up>
-        <div className="welcome-container relative w-[100%]   h-[1000px] md:h-[500px]  overflow-hidden my-[50px] md:my-[80px] mx-auto">
-          <div className='bg-custom_primary_25 w-[95%]  h-[500px]  mx-[2%]  lg:w-[70%]   overflow-hidden rounded-tr-[50px] rounded-bl-[50px] float-left'>
-            <div className='welcome-content md:w-[50%] lg:w-[75%]  mt-[36px] ml-[30px] md:ml-[5px] lg:ml-[30px]'>
+        <div className="flex items-center relative overflow-hidden my-[8%]">
+          <div className='bg-slate-800 w-[90%]  h-[500px]  mx-[2%]  lg:w-[70%]   overflow-hidden rounded-tl-[70px] rounded-br-[70px] float-left'>
+            <div className='md:w-[50%] lg:w-[75%]  mt-[36px] ml-[30px] md:ml-[5px] lg:ml-[30px]'>
               <Fade up>
-                <h2 className='welcome-header text-custom_primary text-[50px] text-left my-5 pt-3'>
+                <div className='text-amber-500 font-bold text-6xl text-left my-5 pt-3'>
                   Welcome
-                </h2>
+                </div>
               </Fade>
               <Fade up>
-                <p className='text-left text-[16px]  font-normal px-[5px] text-slate-900 dark:text-slate-200'>
+                <p className='text-left px-1 text-slate-900 dark:text-slate-300 pr-3' >
                   Welcome
                   There are many variations of passages of Lorem Ipsum available,
                   but the majority have suffered alteration in some form, by injected
                   humour, or randomised words which don't look even slightly believable.There are many variations of passages of Lorem Ipsum availablethe majority have suffered alteration in some form, by injected or randomised words which don't look even slightl believable.
-                </p>   </Fade>
-            
-                  <div className='reserve-button my-[10px] mx-auto mt-[60px] w-[220px] p-[15px] rounded-[12px] font-[600] text-[20px] '>Reserve table</div>
+                </p>
+                <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-3 py-2 px-5 rounded-3xl text-xl hover:text-slate-900 hover:bg-amber-500 mt-5'>Sign up</button>
+
+              </Fade>
+
             </div>
           </div>
 
           <Fade right>
             <div className="welcome-showcase absolute mx-auto top-[495px] left-2 md:left-[50%] md:top-[0px] lg:left-[58%] lg:top-[20px] w-[98%] md:w-[50%] md:w-[400px] lg:w-[530px] h-[430px]">
-              <Fade right delay={10} duration={1000} ><div className="welcome-showcase-image-1 absolute top-0 left-0 w-[60%] md:w-[80%] h-[380px] rounded-[16px]"></div></Fade>
-              <Fade right delay={3} duration={1000} > <div className="welcome-showcase-image-2  absolute bottom-0 right-2  md:right-0  lg:right-2 w-[60%] md:w-[70%]  h-[380px] rounded-[16px]"></div></Fade>
+              <Fade right delay={10} duration={1000} ><div className="welcome-showcase-image-1 absolute top-0 left-0 w-[50%] md:w-[70%] h-[380px] rounded-[16px]"></div></Fade>
+              <Fade right delay={3} duration={1000} > <div className="welcome-showcase-image-2  absolute bottom-0 right-2  md:right-0  lg:right-2 w-[50%] md:w-[70%]  h-[380px] rounded-[16px]"></div></Fade>
             </div>
           </Fade>
         </div>
@@ -161,20 +212,19 @@ function Home() {
             <h2 className="sr-only">Products</h2>
             <div className='relative grid grid-cols-1 gap-x-20 gap-y-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8   z-3'>
               {latestItems.map((item, index) => (
-                
+
                 <ProductCard item={item} />
               ))}
 
             </div>
           </div>
-
-          <div className='discover-button my-[10px] mt-[35px] mx-auto w-[180px] p-[7px]  rounded-[50px]'><span className='font-[700] text-slate-900 dark:text-slate-200'>Discover More!</span></div>
+          <div className='flex items-center justify-center'>
+            <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-3 py-2 px-5 rounded-full text-xl hover:text-slate-900 hover:bg-amber-500 mt-5'>Discover more!</button>
+          </div>
         </div>
       </Fade>
       <Fade up>
-        <div className='contact-container my-[60px] mx-[auto] w-[94%]'>
           <Contact />
-        </div>
       </Fade>
       <div className='about-container'>
         <Footer />
