@@ -48,9 +48,11 @@ export default App;
 */
 import React from 'react'
 
-import {BrowserRouter as Router,  Routes, Route,} from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, } from "react-router-dom"
 import PrivateRoute from "./utils/PrivateRoute"
 import { AuthProvider } from './context/AuthContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 import Homepage from './views/Homepage'
 import Registerpage from './views/Registerpage'
@@ -65,49 +67,38 @@ import MenuRecipe from './pages/MenuRecipe';
 import OrderOnline from './pages/OrderOnline';
 import RecipeDetail from './pages/RecipeDetail';
 import SignUp from './pages/SignUp';
+import Cart from './pages/components/cart';
 import { CartProvider } from './context/cartContext'
-import Login from './pages/Login'
-import MyCartPage from './pages/MyCartPage'
-import PaymentPage from './pages/PaymentPage'
+
 
 
 
 function App() {
-  return (
-   
-     <Router>
-     <AuthProvider>
-      
-     <CartProvider>
-   
-       <Routes>
-                  
-                   <Route path="/"
-                        element={<Home />} />
-                    <Route path="/home"
-                        element={<Home />} />
-                    <Route path="/menu"
-                        element={<MenuRecipe />} />
-                    <Route path="/order-online"
-                        element={<OrderOnline />} />
-                    <Route path="/recipe"
-                        element={<RecipeDetail />} />
-                    <Route path="/about"
-                        element={<AboutUs />} />
-                    <Route path="/login"
-                        element={<Login />} />
-                    <Route path="/signup"
-                        element={<SignUp />} />
-                    <Route path="/contact"
-                        element={<Contact />} />
-                    <Route path="/mycart"
-                        element={<MyCartPage />} />
-                    <Route path="/payment"
-                        element={<PaymentPage />} />
+    return (
 
-                   {/* <Route path='/home' element={ <PrivateRoute> <Home /> </PrivateRoute> }></Route> */}
- 
-            {/*  
+
+        <Router>
+            <AuthProvider>
+
+                <CartProvider>
+                    <Routes>
+
+                        <Route path="/"
+                            element={<Home />} />
+                        <Route path="/home"
+                            element={<Home />} />
+                        <Route path="/menu"
+                            element={<MenuRecipe />} />
+                        <Route path="/order-online"
+                            element={<OrderOnline />} />
+                        <Route path="/recipe"
+                            element={<RecipeDetail />} />
+                        <Route path="/about"
+                            element={<AboutUs />} />
+                      
+                        {/* <Route path='/home' element={ <PrivateRoute> <Home /> </PrivateRoute> }></Route> */}
+
+                        {/*  
          <Route element={<Loginpage />} path="/login" />
      
          <Route element={<Registerpage />} path="/register" exact />
@@ -115,12 +106,11 @@ function App() {
        
 */}
 
-</Routes>
-
-</CartProvider>
-     </AuthProvider>
-   </Router>
-  )
+                    </Routes>
+                </CartProvider>
+            </AuthProvider>
+        </Router>
+    )
 }
 
 export default App
