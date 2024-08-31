@@ -1,12 +1,11 @@
 import React from "react";
 import logo from "../assets/logo.png";
-import { Slide } from "react-reveal";
+import { Fade } from "react-reveal";
 
 const Footer = () => {
     return (
-      
+      <Fade up>
         <footer className="bg-slate-200 dark:bg-slate-950">
-        <Slide down>
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
@@ -27,10 +26,8 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            </Slide>
         </footer>
-            
-        
+        </Fade>
     );
 }
 
