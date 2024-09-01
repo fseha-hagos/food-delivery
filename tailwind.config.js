@@ -20,10 +20,22 @@ module.exports = {
         custom_trianle_bg: '#D9D9D9',
         custom_black_25: 'rgba(0, 0, 0, 0.25)',
       },
+      keyframes: {
+        wander: {
+          '0%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        wander: 'wander 2s infinite alternate',
+      },
     },
+  },
     
   
-  },
-  plugins: [],
-}
 
+  plugins: [],
+
+
+}
