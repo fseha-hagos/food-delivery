@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import {  NavLink, useNavigate } from 'react-router-dom';
 import { Fade } from 'react-reveal';
 import Login from './login';
-import Cart from './cart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
@@ -70,10 +69,12 @@ const AuthButtons = () => {
           className="block w-full pl-2 pr-10 py-2 ps-30 text-sm text-slate-700 rounded-full bg-slate-200 dark:bg-slate-700 dark:text-slate-200 dark:placeholder-slate-200"
           placeholder=" Search..." />
         <div className='absolute flex items-center left-[80%] text-amber-300'> 
-          <Link to={Cart}
-            className='block no-underline text-amber-900 dark:text-amber-300 bg-transparent hover:text-amber-600 transition duration-200 ease-in-out' >
-            <FontAwesomeIcon icon={faShoppingCart} size='xl' />
-          </Link>
+          <NavLink to='/cart'
+ className={({ isActive }) =>
+  `block no-underline   ${isActive ? 'text-amber-500' : 'text-slate-900 dark:text-amber-300'} bg-transparent hover:text-amber-500 transition duration-200 ease-in-out`
+}>            
+<FontAwesomeIcon icon={faShoppingCart} size='xl' />
+          </NavLink>
         </div>
       </div>
       <Button onClick={toggleLogIn} label="Log in" />
