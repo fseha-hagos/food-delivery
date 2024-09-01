@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
-import {  NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Fade } from 'react-reveal';
 import Login from './login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -68,12 +68,12 @@ const AuthButtons = () => {
           id="search-input"
           className="block w-full pl-2 pr-10 py-2 ps-30 text-sm text-slate-700 rounded-full bg-slate-200 dark:bg-slate-700 dark:text-slate-200 dark:placeholder-slate-200"
           placeholder=" Search..." />
-        <div className='absolute flex items-center left-[80%] text-amber-300'> 
+        <div className='absolute flex items-center left-[80%] text-amber-300'>
           <NavLink to='/cart'
- className={({ isActive }) =>
-  `block no-underline   ${isActive ? 'text-amber-500' : 'text-slate-900 dark:text-amber-300'} bg-transparent hover:text-amber-500 transition duration-200 ease-in-out`
-}>            
-<FontAwesomeIcon icon={faShoppingCart} size='xl' />
+            className={({ isActive }) =>
+              `block no-underline   ${isActive ? 'text-amber-500' : 'text-slate-900 dark:text-amber-300'} bg-transparent hover:text-amber-500 transition duration-200 ease-in-out`
+            }>
+            <FontAwesomeIcon icon={faShoppingCart} size='xl' />
           </NavLink>
         </div>
       </div>
@@ -170,7 +170,7 @@ const Menu = ({ isOpen }) => (
             className={({ isActive }) =>
               `block no-underline sm:p-3 md:px-5 hover:rounded-2xl ${isActive ? 'text-amber-500 bg-slate-100 dark:bg-slate-800' : 'text-slate-900 dark:text-amber-200'} bg-transparent hover:text-amber-500 sm:hover:border sm:hover:border-amber-500 md:hover:border-transparent dark:hover:text-amber-500 dark:border-slate-700 transition duration-200 ease-in-out`
             }
-            >
+          >
             {item}
           </NavLink>
         </li>
