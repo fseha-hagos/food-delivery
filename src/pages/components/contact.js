@@ -54,9 +54,9 @@ function Contact(props) {
                     </div>
                 </Fade>
             </div>
-            <Fade down delay={200}>
+            <Fade down delay={400}>
                 <div className='flex flex-col items-center justify-center'>
-                    <Fade up delay={500}>
+                    <Fade up delay={800}>
                         <div className='flex flex-col items-center my-5 justify-center rounded-xl border-2 border-amber-600 w-[60%] h-auto'>
                             <div className='font-bold text-2xl text-amber-600 my-3' >CONTACT US</div>
                             <p className=' text-amber-700 text-xl font-bold mb-4'>Let's get in touch</p>
