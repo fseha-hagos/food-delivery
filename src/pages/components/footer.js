@@ -3,32 +3,32 @@ import logo from "../assets/logo.png";
 import { Fade } from "react-reveal";
 
 const Footer = () => {
-    return (
-      <Fade up>
-        <footer className="bg-slate-200 dark:bg-slate-950">
-            <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-                <div className="md:flex md:justify-between">
-                    <div className="mb-6 md:mb-0">
-                        <Logo />
-                    </div>
-                    <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-                        <About />
-                        <Services />
-                        <Schedules />
-                    </div>
-                </div>
-                <hr className="my-6 border-slate-200 sm:mx-auto dark:border-slate-700 lg:my-8" />
-                <div className="sm:flex sm:items-center sm:justify-between">
-                    <span className="text-sm text-slate-400 sm:text-center ">© 2024 <a href="/home" class="hover:underline no-underline text-slate-500 dark:text-slate-400 ">Royal-Delivery™</a>. All Rights Reserved.
-                    </span>
-                    <div className="flex mt-4 sm:justify-center sm:mt-0">
-                    <FooterSocialLinks />
-                    </div>
-                </div>
+  return (
+    <footer className="bg-slate-200 dark:bg-slate-950">
+      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <Fade up>
+          <div className="md:flex md:justify-between">
+            <div className="mb-6 md:mb-0">
+              <Logo />
             </div>
-        </footer>
+            <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+              <About />
+              <Services />
+              <Schedules />
+            </div>
+          </div>
+          <hr className="my-6 border-slate-200 sm:mx-auto dark:border-slate-700 lg:my-8" />
+          <div className="sm:flex sm:items-center sm:justify-between">
+            <span className="text-sm text-slate-400 sm:text-center ">© 2024 <a href="/home" class="hover:underline no-underline text-slate-500 dark:text-slate-400 ">Royal-Delivery™</a>. All Rights Reserved.
+            </span>
+            <div className="flex mt-4 sm:justify-center sm:mt-0">
+              <FooterSocialLinks />
+            </div>
+          </div>
         </Fade>
-    );
+      </div>
+    </footer>
+  );
 }
 
 const List = ({ items }) => (
