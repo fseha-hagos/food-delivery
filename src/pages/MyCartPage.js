@@ -9,36 +9,29 @@ const swal = require('sweetalert2')
 
 function MyCartPage(props) {
 
-    const [orderId, setOrderId] = useState(null);
-    const [ammount, setAmmount] = useState(0);
-    
-    
-    const [isOrderSaved, setIsOrderSaved] = useState(false)
-    const [isOrderItemSaved, setIsOrderItemSaved] = useState(false)
-    const [isPaymentVarified, setIsPaymentVarified] = useState(false);
-
     const [isLoading, setIsLoading] = useState(false);
+    const [orderId, setOrderId] = useState(null);    
+    const [isOrderSaved, setIsOrderSaved] = useState(false)
+    const [isPaymentVarified, setIsPaymentVarified] = useState(false);
     const [orderStatus, setOrderStatus] = useState("Add some items");
-
+    
+    
     const {carts, onCartOrderConfirmed } = useCartAuth();
     const {user } = useContext(AuthContext);
 
     const navigation = useNavigate();
    
     useEffect(() => {
-
         if(carts !== null ) {
             setOrderStatus("Order now")
         }
        
         console.log("user :", user)
-        //console.log("cart :", carts)
-        
-        console.log("ammoun:", ammount)
-        
+
     })
 
     const onButtonClick = () => {
+        //if carts is empty navigate to menu page to order some items.
         if(carts === null ){
             navigation('/menu')
         }
@@ -52,63 +45,55 @@ function MyCartPage(props) {
         }
         
     }
+
     const handleOnConfirm =  async () => {
         setIsLoading(true)
         setOrderStatus("Ordering...")
         
         if(user.user_id !==null) {
+            try {  
+                
+                const total_ammount = calculateTotalPayment(carts) //total ammount for all purchases
+                console.log("total_ammount : ", total_ammount)
+                const data = await addOrder(user.user_id,"mekelle",total_ammount,"pending")
+                
+                if (data !== null  && total_ammount!==0){
+                    console.log("adding payment")
+                    const paymentData = await addPayment(data.order_id,total_ammount,"chapa"); // 200 for true
 
-        
-        try {  
-            const total_ammount = calculateTotalPayment(carts)
-            console.log("total_ammount : ", total_ammount)
-            const data = await addOrder(user.user_id,"mekelle",total_ammount,"pending")
-            console.log("Result:", orderId,isOrderSaved);
-        
-        
-        
-        if (data !== null  && total_ammount!==0){
-            //const order_id = data.order_id;
-            console.log("adding payment")
-            const paymentData = await addPayment(data.order_id,total_ammount,"chapa"); // 200 for true
-          
-            if(paymentData !== null) {
-                console.log("payment varified")
-                    carts.map((item, index) => {
-                         addOrderItems(item.menu_id, data.order_id, 2, item.price)
-
-                    })
-                    setIsLoading(false)
-                    onCartOrderConfirmed()
-                    setOrderStatus("Thank you for your order your order will be deliverd soon...")
-                    
-    
+                    if(paymentData !== null) {
+                        console.log("payment varified")
+                        //saving all items in carts to database
+                        carts.map((item, index) => {
+                            addOrderItems(item.menu_id, data.order_id, 2, item.price)
+                        })
+                        setIsLoading(false)
+                        onCartOrderConfirmed()  //clears all datas that were saved in carts, that are no more needed.
+                        setOrderStatus("Thank you for your order your order will be deliverd soon...")
+                
+                    }
+                }
+            }catch{
+                console.log("there was a server issue");
+                swal.fire({
+                    title: "there is problem in adding data",
+                    icon: "error",
+                    toast: true,
+                    timer: 6000,
+                    position: 'top-right',
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                })
             }
+        }else {
+            navigation('/menu')
         }
-        
-        
-    }catch{
-        console.log("there was a server issue");
-        swal.fire({
-            title: "there is problem in adding data",
-            icon: "error",
-            toast: true,
-            timer: 6000,
-            position: 'top-right',
-            timerProgressBar: true,
-            showConfirmButton: false,
-        })
-    }
-}else {
-
-    navigation()
-}
 
     }
+
+
     const addOrder =  async (user_id,delivery_address,total_ammount,order_status="pending") => {
         
-        
-        console.log("tototot  - :", total_ammount)
         const response = await fetch(BACKEND_BASE_URL+"/order", {
             method: "POST",
             headers:{
@@ -120,14 +105,13 @@ function MyCartPage(props) {
 
         })
         
-        console.log("response",response);
-         const data = await response.json()
-         if(response.status === 200){
+        const data = await response.json()
+        if(response.status === 200){
             setOrderId(data.order_id);
             setIsOrderSaved(true)
             console.log("order confirmed",);
-         }
-          else {    
+        } else {    
+            data = null;
             console.log(response.status);
             console.log("there was a server issue");
             swal.fire({
@@ -303,6 +287,7 @@ function MyCartPage(props) {
        
       }
 
+<div  className='m-auto text-center w-50 mt-5   px-[48px] py-2 rounded-xl border-2 border-amber-300 no-underline text-amber-900  bg-amber-200'>pay</div> 
                 
      </div>
     );
