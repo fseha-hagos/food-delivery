@@ -1,14 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import logo from '../assets/logo.png';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Fade, Zoom } from 'react-reveal';
+import { Fade } from 'react-reveal';
 import Login from './login';
-import AuthContext from '../../context/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
 
 const Navbar = () => {
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const {user, logoutUser} = useContext(AuthContext);
 
   const handleMenuToggle = () => {
     setMenuOpen(prev => !prev);
@@ -23,7 +25,7 @@ const Navbar = () => {
   return (
     <Fade down>
       <nav className="bg-slate-200 border-slate-200 dark:bg-slate-950">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2">
           <Logo />
           <div className="flex md:order-2">
             <AuthButtons />
@@ -40,12 +42,12 @@ const Navbar = () => {
 
 const Logo = () => (
   <Fade left>
-  <a href="/home" className="flex items-center space-x-3 rtl:space-x-reverse no-underline">
-    <img src={logo} className="h-10" alt="Royal Delivery Logo" />
-    <span className="self-center text-xl font-semibold whitespace-nowrap text-amber-500 dark:text-amber-200 hover:text-slate-900 dark:hover:text-amber-500">
-      Royal Delivery
-    </span>
-  </a>
+    <a href="/home" className="flex items-center space-x-3 rtl:space-x-reverse no-underline">
+      <img src={logo} className="h-7" alt="Royal Delivery Logo" />
+      <span className="self-center text-xl font-semibold whitespace-nowrap text-amber-500 dark:text-amber-200 hover:text-slate-900 dark:hover:text-amber-500">
+        Royal Delivery
+      </span>
+    </a>
   </Fade>
 );
 
@@ -54,58 +56,46 @@ const AuthButtons = () => {
   const navigate = useNavigate();
   const [isLogInOpen, setIsLogInOpen] = useState(false);
 
-  const {user, loginUser, logoutUser} = useContext(AuthContext);
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-
-  const handleLogout = (event) => {
-   
-    logoutUser()
-  
-  };
-
-  const onSubmitLogin = (event) =>{
-    event.preventDefault();
-    loginUser(email,password)
-    setIsLogInOpen(false)
-    
-  }
-
-
   const toggleLogIn = () => {
     setIsLogInOpen(!isLogInOpen);
   };
 
   return (
-    <div className="flex items-center">
-      {
-        user ? (<Button onClick={ handleLogout} label="Log out" />) 
-               :(<><Button onClick={() => navigate('/signup')} label="Sign up" /><Button onClick={toggleLogIn} label="Log in" /></>)
-      
-    }
-      <Login isOpen={isLogInOpen} onClose={() => setIsLogInOpen(false)}>  
+    <div className="flex items-center ">
+      <div className="relative my-1 mx-3 flex items-center ">
+        <input
+          type="text"
+          id="search-input"
+          className="block w-full pl-2 pr-10 py-2 ps-30 text-sm text-slate-700 rounded-full bg-slate-200 dark:bg-slate-700 dark:text-slate-200 dark:placeholder-slate-200"
+          placeholder=" Search..." />
+        <div className='absolute flex items-center left-[80%] text-amber-300'>
+          <NavLink to='/cart'
+            className={({ isActive }) =>
+              `block no-underline   ${isActive ? 'text-amber-500' : 'text-slate-900 dark:text-amber-300'} bg-transparent hover:text-amber-500 transition duration-200 ease-in-out`
+            }>
+            <FontAwesomeIcon icon={faShoppingCart} size='xl' />
+          </NavLink>
+        </div>
+      </div>
+      <Button onClick={toggleLogIn} label="Log in" />
+      <Login isOpen={isLogInOpen} onClose={() => setIsLogInOpen(false)}>
         <h3 className='text-slate-900 text-center' >Log in</h3>
-        <form onSubmit={onSubmitLogin}>
+        <form>
           <div className="mb-3">
             <label className="block text-sm font-medium text-slate-800">Email</label>
-            <input type="email" className="mt-1 block w-full p-2 bg-slate-300  rounded-md" onChange={(e) => setEmail(e.target.value)}/>
+            <input type="email" className="mt-1 block w-full p-2 bg-slate-300  rounded-md" />
           </div>
           <div className="mb-5">
-          <label className="block text-sm font-medium text-slate-800">Password</label>
-          <input type="password" className="mt-1 block w-full p-2 bg-slate-300 rounded-md" onChange={(e) => setPassword(e.target.value)}/>
+            <label className="block text-sm font-medium text-slate-800">Password</label>
+            <input type="password" className="mt-1 block w-full p-2 bg-slate-300 rounded-md" />
           </div>
-          <input
-              type="submit"
-              name="submit"
-              value="Log in"
-              className="w-full p-2 border-2 border-slate-900 text-slate-900 hover:text-white rounded-lg hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 transition duration-300"
-            />      
-            </form>
-        <div className='text-center text-slate-900 my-3'>Create new account? 
+          <input type="submit" name="submit" value="Log in"
+            className="w-full p-2 border-2 border-slate-900 text-slate-900 hover:text-white rounded-lg hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 transition duration-300"
+          />
+        </form>
+        <div className='text-center text-slate-900 my-3'>Create new account?
           <a href='/signup' className='no-underline text-slate-200 hover:text-slate-950' > Sign up</a>
-          </div>
+        </div>
       </Login>
     </div>
   );
@@ -113,9 +103,7 @@ const AuthButtons = () => {
 };
 
 const Button = ({ onClick, label }) => (
-  <button
-    type="button"
-    onClick={onClick}
+  <button type="button" onClick={onClick}
     className="text-slate-900 dark:text-amber-300 hover:text-black border-2 border-amber-300 hover:border-amber-600 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm mr-2 px-3 py-1 text-center dark:focus:ring-amber-800 transition duration-200 ease-in-out"
   >
     {label}
@@ -137,16 +125,19 @@ const ToggleButton = ({ onClick, isOpen, icon, ariaControls, ariaExpanded }) => 
   };
 
   return (
-    <button
-      type="button"
-      className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-amber-500 rounded-lg md:hidden hover:text-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:text-amber-200 dark:hover:text-amber-500 dark:focus:ring-amber-200 transition duration-200 ease-in-out"
-      onClick={onClick}
-      aria-controls={ariaControls}
-      aria-expanded={ariaExpanded}
-    >
-      <span className="sr-only">{icon === 'search' ? 'Search' : 'Open main menu'}</span>
-      {icons[icon]}
-    </button>
+    <>
+      <button
+        type="button"
+        className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-amber-500 rounded-lg md:hidden hover:text-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:text-amber-200 dark:hover:text-amber-500 dark:focus:ring-amber-200 transition duration-200 ease-in-out"
+        onClick={onClick}
+        aria-controls={ariaControls}
+        aria-expanded={ariaExpanded}
+      >
+        <span className="sr-only">{icon === 'search' ? 'Search' : 'Open main menu'}</span>
+        {icons[icon]}
+      </button>
+
+    </>
   );
 };
 
@@ -170,16 +161,9 @@ const Menu = ({ isOpen }) => (
     className={`md:flex md:w-auto md:order-1 ${isOpen ? 'block' : 'hidden'} w-full transition-opacity duration-300 ease-in-out`}
     id="navbar-menu"
   >
-    <div className="relative mt-3 md:hidden">
-      <input
-        type="text"
-        id="search-input"
-        className="block w-full p-2 ps-20 text-sm text-slate-900 rounded-lg bg-slate-200 dark:bg-slate-700 dark:text-slate-200 dark:placeholder-slate-400"
-        placeholder="Search..."
-      />
-    </div>
-    <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium md:border md:border-slate-50 rounded-lg bg-amber-200 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-slate-900 md:dark:bg-slate-900 dark:border-slate-700">
-      {['Home', 'Menu', 'Order Online', 'About', 'Contact'].map((item, index) => (
+
+    <ul className="flex flex-col p-2 md:p-0 mt-2 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-slate-900 md:dark:bg-slate-900 dark:border-slate-700">
+      {['Home', 'Menu', 'Order Online', 'About'].map((item, index) => (
         <li key={index}>
           <NavLink
             to={`/${item.toLowerCase().replace(' ', '-')}`}
@@ -192,6 +176,7 @@ const Menu = ({ isOpen }) => (
         </li>
       ))}
     </ul>
+
   </div>
 );
 
