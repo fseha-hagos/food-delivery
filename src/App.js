@@ -6,6 +6,7 @@ import Home from './pages/home';
 import MenuRecipe from './pages/MenuRecipe';
 import OrderOnline from './pages/OrderOnline';
 import RecipeDetail from './pages/RecipeDetail';
+import SignUp from './pages/SignUp';
 import Cart from './pages/cart';
 import { CartProvider } from './context/cartContext'
 
@@ -29,6 +30,8 @@ function App() {
                             element={<AboutUs />} />
                         <Route path="/cart"
                             element={<Cart />} />
+                        <Route path="/signup"
+                            element={<SignUp />} />
                     </Routes>
                 </CartProvider>
             </AuthProvider>
