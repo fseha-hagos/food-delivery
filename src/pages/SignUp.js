@@ -5,7 +5,7 @@ import Footer from './components/footer';
 import { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { Fade } from 'react-reveal';
 function SignUp() {
  
   const navigation = useNavigate();
@@ -29,9 +29,10 @@ function SignUp() {
     {
       !user ?
     <div className="bg-custom_background dark:bg-slate-900 min-h-screen flex flex-col">
-     
+     <Navbar />
 
       <div className="flex flex-col md:flex-row items-center justify-center flex-grow px-4 py-8 md:px-8 md:py-12">
+        <Fade left >
         <div className="md:w-1/2 lg:w-1/3 flex justify-center mb-8 md:mb-0">
           <img
             className="w-full h-auto rounded-lg shadow-lg"
@@ -39,6 +40,8 @@ function SignUp() {
             src={require('./assets/signup-a71433d156a00a662f932c404515f01e.png')}
           />
         </div>
+        </Fade>
+        <Fade right>
         <div className="bg-transparent dark:bg-slate-800 p-8 md:p-10  w-full max-w-md">
           <h3 className="text-2xl font-semibold text-amber-500 mb-4">Create An Account</h3>
           <p className="text-slate-500 mb-6">Join us and enjoy the best services we offer.</p>
@@ -70,7 +73,7 @@ function SignUp() {
             <input
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="confirm password"
               value={password2}
               onChange={(e) => setPassword2(e.target.value)}
               className="w-full p-3 mb-5 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
@@ -100,9 +103,10 @@ function SignUp() {
             </Link>
           </div>
         </div>
+        </Fade>
       </div>
 
-    
+    <Footer />
     </div>
     :
     navigation("/home")
