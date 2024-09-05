@@ -89,23 +89,23 @@ const Schedules = () => (
     items={[
       { href: "#", text: "Sunday - Saturday", className: "hover:underline no-underline text-slate-500 dark:text-slate-400 font-medium" },
       { href: "#", text: "7:30 AM - 10:30 PM", className: "hover:underline no-underline text-slate-500 dark:text-slate-400 font-medium" },
-      { href: "#", text: "royal@gmail.com", className: "hover:underline no-underline text-slate-500 dark:text-slate-400 font-medium" }
+      { href: "mailto:royaldelivery@gmailcom", text: "royaldelivery@gmail.com", className: "hover:underline no-underline text-slate-500 dark:text-slate-400 font-medium" }
     ]}
   />
 );
 
 const FooterSocialLinks = () => (
   <div className="flex">
-    <a href="#" className="no-underline cursor-pointer mx-4 text-amber-700 hover:text-amber-300">
+    <a href="https://www.facebook.com/Royal_Delivery" target="_blank" rel="noopener noreferrer" className="no-underline cursor-pointer mx-4 text-amber-700 hover:text-amber-300">
       <FontAwesomeIcon icon={faFacebookF} size='lg' />
     </a>
-    <a href="#" className="no-underline cursor-pointer mx-4 text-amber-700 hover:text-amber-300">
+    <a  href="https://t.me/RoyalDelivery1" target="_blank" rel="noopener noreferrer" className="no-underline cursor-pointer mx-4 text-amber-700 hover:text-amber-300">
       <FontAwesomeIcon icon={faTelegramPlane} size='lg' />
     </a>
-    <a href="#" className="no-underline cursor-pointer mx-4 text-amber-700 hover:text-amber-300">
+    <a  href="mailto:royaldelivery@gmail.com" className="no-underline cursor-pointer mx-4 text-amber-700 hover:text-amber-300">
       <FontAwesomeIcon icon={faEnvelope} size='lg' />
     </a>
-    <a href="#" className="no-underline cursor-pointer mx-4 text-amber-700 hover:text-amber-300">
+    <a href="https://www.instagram.com/Relivery_Delivery" target="_blank" rel="noopener noreferrer" className="no-underline cursor-pointer mx-4 text-amber-700 hover:text-amber-300">
       <FontAwesomeIcon icon={faInstagram} size='lg' />
     </a>
 
