@@ -28,7 +28,7 @@ module.exports = {
         },
       },
       animation: {
-        wander: 'wander 2s infinite alternate',
+        wander: 'wander 3s infinite alternate',
       },
     },
   },
