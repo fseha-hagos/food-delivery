@@ -6,7 +6,7 @@ import { faFacebookF, faInstagram, faTelegramPlane } from '@fortawesome/free-bra
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 const Footer = () => {
   return (
-    <footer className="bg-slate-200 dark:bg-slate-950">
+    <footer className="bg-amber-200 dark:bg-slate-950">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <Fade up>
           <div className="md:flex md:justify-between">
@@ -21,7 +21,7 @@ const Footer = () => {
           </div>
           <hr className="my-3 border-slate-200 sm:mx-auto dark:border-slate-700 lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
-            <span className="text-sm text-slate-400 sm:text-center ">© 2024 <a href="/home" class="hover:underline no-underline text-slate-500 dark:text-slate-400 ">Royal-Delivery™</a>. All Rights Reserved.
+            <span className="text-sm text-slate-600 dark:text-slate-400 sm:text-center ">© 2024 <a href="/home" class="hover:underline no-underline text-slate-800 dark:text-slate-400 ">Royal-Delivery™</a>. All Rights Reserved.
             </span>
             <div className="flex  sm:justify-center sm:mt-0">
               <FooterSocialLinks />
@@ -57,7 +57,7 @@ const Section = ({ title, items }) => (
 const Logo = () => (
   <a href="/home" className="flex items-center no-underline">
     <img src={logo} className="h-8 me-3" alt="Royal Delivery Logo" />
-    <span className="self-center text-xl font-semibold whitespace-nowrap text-amber-500 dark:text-amber-200 hover:text-slate-900 dark:hover:text-amber-500">
+    <span className="self-center text-xl font-semibold whitespace-nowrap text-amber-600 dark:text-amber-200 hover:text-slate-900 dark:hover:text-amber-500">
       Royal Delivery
     </span>
   </a>
@@ -67,8 +67,8 @@ const About = () => (
   <Section
     title="About us"
     items={[
-      { href: "/menu", text: "Menu", className: "hover:text-amber-200 no-underline text-slate-500 dark:text-slate-400 font-medium" },
-      { href: "#", text: "Price", className: "hover:text-amber-200 no-underline text-slate-500 dark:text-slate-400 font-medium" }
+      { href: "/menu", text: "Menu", className: "hover:text-amber-600 no-underline text-slate-500 dark:text-slate-400 dark:hover:text-amber-200 font-medium" },
+      { href: "#", text: "Price", className: "hover:text-amber-600 no-underline text-slate-500 dark:text-slate-400 dark:hover:text-amber-200 font-medium" }
     ]}
   />
 );
@@ -77,8 +77,8 @@ const Services = () => (
   <Section
     title="Services"
     items={[
-      { href: "/Order-online", text: "Delivery", className: "hover:text-amber-200 no-underline text-slate-500 dark:text-slate-400 font-medium" },
-      { href: "#", text: "Packaging", className: "hover:text-amber-200 no-underline text-slate-500 dark:text-slate-400 font-medium" }
+      { href: "/Order-online", text: "Delivery", className: "hover:text-amber-600 dark:hover:text-amber-200 no-underline text-slate-500 dark:text-slate-400 font-medium" },
+      { href: "#", text: "Packaging", className: "hover:text-amber-600 dark:hover:text-amber-200 no-underline text-slate-500 dark:text-slate-400 font-medium" }
     ]}
   />
 );
@@ -96,16 +96,16 @@ const Schedules = () => (
 
 const FooterSocialLinks = () => (
   <div className="flex">
-    <a href="https://www.facebook.com/Royal_Delivery" target="_blank" rel="noopener noreferrer" className="no-underline cursor-pointer mx-4 text-amber-700 hover:text-amber-300">
+    <a href="https://www.facebook.com/Royal_Delivery" target="_blank" rel="noopener noreferrer" className="no-underline cursor-pointer mx-4 text-amber-500 dark:text-amber-700 hover:text-slate-500 dark:hover:text-amber-300">
       <FontAwesomeIcon icon={faFacebookF} size='lg' />
     </a>
-    <a  href="https://t.me/RoyalDelivery1" target="_blank" rel="noopener noreferrer" className="no-underline cursor-pointer mx-4 text-amber-700 hover:text-amber-300">
+    <a  href="https://t.me/RoyalDelivery1" target="_blank" rel="noopener noreferrer" className="no-underline cursor-pointer mx-4 text-amber-500 dark:text-amber-700 hover:text-slate-500 dark:hover:text-amber-300">
       <FontAwesomeIcon icon={faTelegramPlane} size='lg' />
     </a>
-    <a  href="mailto:royaldelivery@gmail.com" className="no-underline cursor-pointer mx-4 text-amber-700 hover:text-amber-300">
+    <a  href="mailto:royaldelivery@gmail.com" className="no-underline cursor-pointer mx-4 text-amber-500 dark:text-amber-700 hover:text-slate-500 dark:hover:text-amber-300">
       <FontAwesomeIcon icon={faEnvelope} size='lg' />
     </a>
-    <a href="https://www.instagram.com/Relivery_Delivery" target="_blank" rel="noopener noreferrer" className="no-underline cursor-pointer mx-4 text-amber-700 hover:text-amber-300">
+    <a href="https://www.instagram.com/Relivery_Delivery" target="_blank" rel="noopener noreferrer" className="no-underline cursor-pointer mx-4 text-amber-500 dark:text-amber-700 hover:text-slate-500 dark:hover:text-amber-300">
       <FontAwesomeIcon icon={faInstagram} size='lg' />
     </a>
 

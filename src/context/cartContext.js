@@ -39,19 +39,18 @@ export const CartProvider = ({children})=>{
 
     const [carts, setCarts] = useState(() =>
         localStorage.getItem("carts")
-            ? JSON.parse(localStorage.getItem("carts")) : [{}]
+            ? JSON.parse(localStorage.getItem("carts")) : []
             
     );
     console.log("carts----------", carts)
-    const [totalPrice, setTotalPrice] = useState(0);
     const [likedProducts, setLikedProducts] = useState([])
 
     useEffect(() => {
-       
+        console.log("carts----------", carts)
         //totalSum(carts);
         //loadCartItems();
         //loadLikedItems();
-    },[totalPrice,carts])
+    },[carts])
 
     const loadCartItems = async () => {
         let getCarts =  localStorage.getItem("carts");
@@ -69,12 +68,7 @@ export const CartProvider = ({children})=>{
         setLikedProducts(savedLikes);
     }
 
-    const totalSum = (carts) => {
-        const totalSum = carts.reduce((accumulator, item) => accumulator + (Number(item.price)*Number(item.totalPurchase)), 0);
-        setTotalPrice(totalSum);
-        console.log(totalSum)
-      //  const totalSum ()=  carts.reduce((ammount, item) => ammount+ item.price , 0);
-    }
+
 
     const handleLiked = async (items) => { 
          
@@ -96,21 +90,7 @@ export const CartProvider = ({children})=>{
       }
    
      
-    const deleteFromCart = async (item) => {
-        const newItems = carts.filter((cart) => cart.id !== item.id) ;
-        localStorage.setItems("carts", JSON.stringify(newItems));
-        // await AsyncStorage.setItem("carts", JSON.stringify(newItems));
-        setCarts(newItems)
-        totalSum(newItems);
-    }
-    // const refreshCart = async () => {
-    //     loadCartItems();
-    //     loadLikedItems();
-    // }
-
-    const onCartOrderConfirmed = async () => {
-        //localStorage.setItem("carts", null)
-    //   await AsyncStorage.setItem("carts", JSON.stringify(updatedCarts));
+    const deleteAllCartItems = async () => {
         setCarts(null);
         localStorage.setItem("carts", JSON.stringify(carts))
         
@@ -118,44 +98,77 @@ export const CartProvider = ({children})=>{
     const onAddToCart = async (item) => {
         await loadCartItems()
         if (carts === null) {
-            const newCarts = [item]
-            localStorage.setItem("carts", JSON.stringify(newCarts))
-            // await AsyncStorage.setItem("carts",JSON.stringify(newCarts))
-            setCarts(newCarts);
-            totalSum(newCarts)
+            setCarts([item]);
+            localStorage.setItem("carts", JSON.stringify(carts))
             return
         }
+        else{
         const itemExists = carts.findIndex((cart) => cart.menu_id === item.menu_id);
         if(itemExists !== -1){
-            const updatedCarts = [...carts];
-            updatedCarts[itemExists].totalPurchase = (item.totalPurchase); // Add 1 to quantity
-            updatedCarts[itemExists].color = (item.color ); // Add 1 to quantity
-            localStorage.setItem("carts", JSON.stringify(updatedCarts))
-            //await AsyncStorage.setItem("carts", JSON.stringify(updatedCarts));
-            setCarts(updatedCarts);
-            totalSum(updatedCarts);
+                alert("you have ordered this item, pease go to your cart to edit your items..")
         }
        else{
             const newCarts = [...carts , item]
             localStorage.setItem("carts", JSON.stringify(newCarts))
-            // await AsyncStorage.setItem("carts",JSON.stringify(newCarts))
             setCarts(newCarts);
-            totalSum(newCarts)
-       }
-        
-       console.log(" cart item--------- : ",carts.length)
-       // return Promise.resolve();
+            }
+        }
+    
     }
 
+
+    const handleQuantityChange = (id, quantity) => {
+        loadCartItems()
+        setCarts(
+            carts.map(item => {
+                if (item.menu_id === id) {
+                    return { ...item, quantity };
+                }
+                return item;
+            }),
+        )
+        localStorage.setItem("carts", JSON.stringify(carts))
+    };
+
+
+    const handleRemoveItem = id => {
+        loadCartItems()
+        setCarts(carts.filter(item => item.menu_id !== id));
+        localStorage.setItem("carts", JSON.stringify(carts))
+    };
+
+    const calculateItemTotal = (item) => {
+        return item.price * item.quantity;
+    };
+
+    const calculateSubtotal = () => {
+       const acc = carts ? ( carts.reduce((acc, item) => acc + item.price * item.quantity, 0)) : ( 0)
+        return acc
+    };
+
+    const calculateTax = () => {
+        return calculateSubtotal() * 0.1;
+    };
+
+    const calculateTotal = () => {
+        return calculateSubtotal() + calculateTax();
+    };
+
     const value = {
-        totalPrice,
         carts,
         onAddToCart,
-        deleteFromCart,
         likedProducts,
         handleLiked,
-        onCartOrderConfirmed
-        //refreshCart,
+        deleteAllCartItems,
+
+        
+        handleQuantityChange,
+        handleRemoveItem,
+        calculateItemTotal,
+        calculateSubtotal,
+        calculateTax,
+        calculateTotal
+       
     };
 
     return (
