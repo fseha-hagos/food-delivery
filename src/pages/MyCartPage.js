@@ -20,7 +20,12 @@ function MyCartPage(props) {
     const [isLoading, setIsLoading] = useState(false);
     const [orderStatus, setOrderStatus] = useState("Add some items");
 
-    const {carts, onCartOrderConfirmed } = useCartAuth();
+    const {carts, deleteAllCartItems,handleQuantityChange,
+        handleRemoveItem,
+        calculateItemTotal,
+        calculateSubtotal,
+        calculateTax,
+        calculateTotal } = useCartAuth();
     const {user } = useContext(AuthContext);
 
     const navigation = useNavigate();
@@ -79,7 +84,7 @@ function MyCartPage(props) {
 
                     })
                     setIsLoading(false)
-                    onCartOrderConfirmed()
+                    deleteAllCartItems()
                     setOrderStatus("Thank you for your order your order will be deliverd soon...")
                     
     

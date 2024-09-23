@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from '../assets/logo.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Fade } from 'react-reveal';
 import Login from './login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import AuthContext from '../../context/AuthContext';
 
 
 const Navbar = () => {
@@ -56,12 +57,33 @@ const AuthButtons = () => {
   const navigate = useNavigate();
   const [isLogInOpen, setIsLogInOpen] = useState(false);
 
+
+  const {user, loginUser, logoutUser} = useContext(AuthContext);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const handleLogout = (event) => {
+    logoutUser()
+  };
+
+  const onSubmitLogin = (event) =>{
+    event.preventDefault();
+    loginUser(email,password)
+    setIsLogInOpen(false)
+
+  }
+
+
   const toggleLogIn = () => {
     setIsLogInOpen(!isLogInOpen);
   };
 
   return (
-    <div className="flex items-center ">
+    <div className="flex items-center">
+     
+       
       <div className="relative my-1 mx-3 flex items-center ">
         <input
           type="text"
@@ -77,17 +99,22 @@ const AuthButtons = () => {
           </NavLink>
         </div>
       </div>
-      <Button onClick={toggleLogIn} label="Log in" />
+      {
+        user ? (<Button onClick={ handleLogout} label="Log out" />) 
+               :(<Button onClick={toggleLogIn} label="Log in" />)
+
+    }
+    
       <Login isOpen={isLogInOpen} onClose={() => setIsLogInOpen(false)}>
         <h3 className='text-slate-900 text-center' >Log in</h3>
-        <form>
+        <form onSubmit={onSubmitLogin}>
           <div className="mb-3">
-            <label className="block text-sm font-medium text-slate-800">Email</label>
-            <input type="email" className="mt-1 block w-full p-2 bg-slate-300  rounded-md" />
+            <label className="block text-sm font-medium text-slate-800" >Email</label>
+            <input type="email" className="mt-1 block w-full p-2 bg-slate-300  rounded-md" onChange={(e) => setEmail(e.target.value)}/>
           </div>
           <div className="mb-5">
             <label className="block text-sm font-medium text-slate-800">Password</label>
-            <input type="password" className="mt-1 block w-full p-2 bg-slate-300 rounded-md" />
+            <input type="password" className="mt-1 block w-full p-2 bg-slate-300 rounded-md" onChange={(e) => setPassword(e.target.value)}/>
           </div>
           <input type="submit" name="submit" value="Log in"
             className="w-full p-2 border-2 border-slate-900 text-slate-900 hover:text-white rounded-lg hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 transition duration-300"

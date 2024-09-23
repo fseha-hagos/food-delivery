@@ -5,10 +5,11 @@ import ProductCard from "./components/product-card";
 import Contact from './components/contact';
 import Footer from './components/footer';
 import { Fade } from 'react-reveal';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BACKEND_BASE_URL } from '../context/constants';
 import homeImage from './assets/home-1.png';
 import foodImage from './assets/image-2.jpg';
+import AuthContext from '../context/AuthContext';
 
 
 const products = [
@@ -94,6 +95,7 @@ const FoodImage = ({ src }) => {
 function Home() {
 
   const [latestItems, setLatestItems] = useState([]);
+  const {user} = useContext(AuthContext);
 
   useEffect(
     () => {
@@ -138,7 +140,12 @@ function Home() {
               </p>
               <div className='flex'>
               <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-4 py-1 px-4 rounded-full text-lg hover:text-slate-900 hover:bg-amber-500 '>Order Now</button>
-              <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-4 py-1 px-4 ml-[15%]  rounded-full text-lg hover:text-slate-900 hover:bg-amber-500 '>Sign Up</button>
+              {
+                user ? (<></>) :
+                <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-4 py-1 px-4 ml-[15%]  rounded-full text-lg hover:text-slate-900 hover:bg-amber-500 '>Sign Up</button>
+  
+              }
+              
 </div>
             </div>
           </Fade>
@@ -184,8 +191,12 @@ function Home() {
                   but the majority have suffered alteration in some form, by injected
                   humour, or randomised words which don't look even slightly believable.There are many variations of passages of Lorem Ipsum availablethe majority have suffered alteration in some form, by injected or randomised words which don't look even slightl believable.
                 </p>
-                <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-3 py-2 px-5 rounded-3xl text-xl hover:text-slate-900 hover:bg-amber-500 mt-5'>Sign up</button>
-
+                {
+                  user ? (<></>) :
+                  (<button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-3 py-2 px-5 rounded-3xl text-xl hover:text-slate-900 hover:bg-amber-500 mt-5'>Sign up</button>
+                  )
+                }
+                
               </Fade>
 
             </div>

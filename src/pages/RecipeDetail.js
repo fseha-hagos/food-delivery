@@ -63,9 +63,16 @@ const RecipeDetail = (  ) => {
 
 
   const handleAddToCart = (item) => {
-    onAddToCart(item);
+    let i = {
+      menu_id : item.menu_id,
+      item_name : item.item_name,
+      image : item.image,
+      price : item.price,
+      quantity : 1
+    }
+    onAddToCart(i);
  
-    navigation("/mycart");
+    navigation("/cart");
   }
   return (
     <div className="bg-custom_background dark:bg-slate-900">
