@@ -10,7 +10,7 @@ import SignUp from './pages/SignUp';
 import Cart from './pages/cart';
 import { CartProvider } from './context/cartContext'
 import MyCartPage from './pages/MyCartPage';
-import SignUp from './pages/SignUp';
+
 
 import Login from './pages/Login';
 import Contact from './pages/components/contact';
