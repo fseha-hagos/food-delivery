@@ -9,7 +9,13 @@ import { useContext, useEffect, useState } from 'react';
 import { BACKEND_BASE_URL } from '../context/constants';
 import homeImage from './assets/home-1.png';
 import foodImage from './assets/image-2.jpg';
+<<<<<<< HEAD
 import AuthContext from '../context/AuthContext';
+=======
+import SignUp from './SignUp';
+import MenuRecipe from './MenuRecipe';
+import { Link } from 'react-router-dom';
+>>>>>>> 533c2c8332ce1bf7621811d3bf542defb5a73bac
 
 
 const products = [
@@ -139,6 +145,7 @@ function Home() {
                 humour, or randomised words which don't look even slightly believable.
               </p>
               <div className='flex'>
+<<<<<<< HEAD
               <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-4 py-1 px-4 rounded-full text-lg hover:text-slate-900 hover:bg-amber-500 '>Order Now</button>
               {
                 user ? (<></>) :
@@ -147,6 +154,15 @@ function Home() {
               }
               
 </div>
+=======
+                <a href="/menu" >
+                  <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-4 py-1 px-4  rounded-full text-lg hover:text-slate-900 hover:bg-amber-500 '>Order Now</button>
+                </a>
+                <a href='/SignUp'>
+                  <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-4 py-1 px-4 ml-5  rounded-full text-lg hover:text-slate-900 hover:bg-amber-500 '>Sign Up</button>
+                </a>
+              </div>
+>>>>>>> 533c2c8332ce1bf7621811d3bf542defb5a73bac
             </div>
           </Fade>
           <Fade right delay={100}>
@@ -155,7 +171,7 @@ function Home() {
               <div className='flex items-center'>
                 <a href='#' className='cursor-pointer '>
                   <img src={foodImage} alt="Food"
-                       className="animate-wander absolute  w-[24%] h-auto rounded-full transition-transform left-[10%] top-[50%]" />
+                    className="animate-wander absolute  w-[24%] h-auto rounded-full transition-transform left-[10%] top-[50%]" />
                 </a>
                 <a href='#' className='cursor-pointer'>
                   <img src={foodImage} alt="Food"
@@ -191,12 +207,18 @@ function Home() {
                   but the majority have suffered alteration in some form, by injected
                   humour, or randomised words which don't look even slightly believable.There are many variations of passages of Lorem Ipsum availablethe majority have suffered alteration in some form, by injected or randomised words which don't look even slightl believable.
                 </p>
+<<<<<<< HEAD
                 {
                   user ? (<></>) :
                   (<button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-3 py-2 px-5 rounded-3xl text-xl hover:text-slate-900 hover:bg-amber-500 mt-5'>Sign up</button>
                   )
                 }
                 
+=======
+                <a href='/SignUp'>
+                <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-3 py-2 px-5 rounded-3xl text-xl hover:text-slate-900 hover:bg-amber-500 mt-5'>Get Started</button>
+                </a>
+>>>>>>> 533c2c8332ce1bf7621811d3bf542defb5a73bac
               </Fade>
 
             </div>
@@ -230,16 +252,16 @@ function Home() {
             </div>
           </div>
           <div className='flex items-center justify-center'>
+            <a href='/menu'>
             <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-3 py-2 px-5 rounded-full text-xl hover:text-slate-900 hover:bg-amber-500 mt-5'>Discover more!</button>
+            </a>
           </div>
         </div>
       </Fade>
       <Fade up>
-          <Contact />
+        <Contact />
       </Fade>
-      <div className='about-container'>
         <Footer />
-      </div>
 
 
     </div>

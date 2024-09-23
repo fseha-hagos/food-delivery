@@ -4,53 +4,52 @@ import { faPhone, faSms, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faTelegram } from '@fortawesome/free-brands-svg-icons';
 import { Fade } from 'react-reveal';
 
-
-
 function Contact(props) {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [comment, setComment] = useState('');
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        alert(`The name you entered is: ${name}`)
+    const handleSubmit = () => {
+return(
+    alert("Thank you for leaving comment!")
+)
     }
-
-
     return (
         <div className='m-[10%]'>
             <div className='md:grid md:grid-cols-4 md:gap-12 '>
                 <Fade left delay={400}>
                     <div className='text-slate-200 border-2 border-teal-600 text-center rounded w-full h-[250px]'>
                         <FontAwesomeIcon icon={faPhone} size='3x' className='text-teal-600 my-4' />
-                        <div className='font-bold text-lg'>PHONE NUMBER</div>
-                        <div className='text-slate-300'>+25914758855</div>
-                        <div className='text-slate-300'>+25197839300</div>
+                        <div className='font-bold text-lg'>CALL US</div>
+                        <a href="tel:+25914758855" className='text-slate-300 cursor-pointer no-underline hover:text-teal-400'>+25914758855</a>
+                        <br />
+                        <a href="tel:+25914679922" className='text-slate-300 cursor-pointer no-underline hover:text-teal-400'>+25914679922</a>
                     </div>
                 </Fade>
                 <Fade left delay={200}>
                     <div className='text-slate-200 border-2 border-lime-600 text-center rounded w-full h-[250px]'>
                         <FontAwesomeIcon icon={faSms} size='3x' className='text-lime-600 my-4' />
                         <div className='font-bold text-lg'>SMS</div>
-                        <div className='text-slate-300'>+25914758855</div>
-                        <div className='text-slate-300'>+25197839300</div>
+                        <a href="sms:+25914758855" className='text-slate-300 no-underline cursor-pointer hover:text-lime-400'>+25914758855</a>
+                        <br />
+                        <a href="sms:+25914679922" className='text-slate-300 cursor-pointer no-underline hover:text-lime-400'>+25914679922</a>
                     </div>
                 </Fade>
                 <Fade right delay={200}>
                     <div className='text-slate-200 border-2 border-indigo-600 text-center rounded w-full h-[250px]'>
                         <FontAwesomeIcon icon={faEnvelope} size='3x' className='text-indigo-600 my-4' />
                         <div className='font-bold text-lg'>EMAIL</div>
-                        <div className='text-slate-300'>royal@gmail.com</div>
-                        <div className='text-slate-300'>royaldelivery@yahoo.com</div>
+                        <a href="mailto:royaldelivery@gmail.com" className='text-slate-300 no-underline cursor-pointer hover:text-indigo-400'>royaldelivery@gmail.com</a>
                     </div>
                 </Fade>
                 <Fade right delay={400}>
                     <div className='text-slate-200 border-2 border-pink-600 text-center rounded w-full h-[250px]'>
                         <FontAwesomeIcon icon={faTelegram} size='3x' className='text-pink-600 my-4' />
                         <div className='font-bold text-lg'>TELEGRAM</div>
-                        <div className='text-slate-300'>@royalfooddelivery</div>
-                        <div className='text-slate-300'>@royaldelivery</div>
+                        <a href="https://t.me/RoyalDelivery1" target="_blank" rel="noopener noreferrer" className='hover:text-pink-400 cursor-pointer no-underline text-slate-300'>RoyalDelivery1</a>
+                        <br />
+                        <a href="https://t.me/RoyalDelivery2" target="_blank" rel="noopener noreferrer" className='hover:text-pink-400 cursor-pointer no-underline text-slate-300'>RoyalDelivery2</a>
                     </div>
                 </Fade>
             </div>
@@ -65,15 +64,16 @@ function Contact(props) {
                                     className='  outline-none mx-auto mt-4  w-[100%] p-[10px] rounded-xl border-1 border-amber-700 bg-transparent text-slate-200' />
                                 <input type="email" name='email' placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}
                                     className=' outline-none mx-auto mt-4 w-[100%] rounded-xl border-1 border-amber-700 p-[10px] bg-transparent text-slate-200' />
-                                <textarea type="textarea" name='comment' placeholder={"Comment..."} rows="5" value={comment} onChange={(e) => setComment(e.target.value)}
+                                <textarea type="textarea" name='comment' placeholder={"Leave your comment..."} rows="5" value={comment} onChange={(e) => setComment(e.target.value)}
                                     className='outline-none mx-auto mt-5 rounded-xl w-[100%] text-left border-1 border-amber-700 p-[10px] bg-transparent text-slate-200' />
                                 <input type="submit" name='submit' value={"Submit"} className='text-center transition-transform duration-300 hover:scale-105 bg-amber-600 rounded-xl  outline-none my-5 py-2 w-[30%]  text-slate-950' />
+
                             </form>
                         </div>
                     </Fade>
                 </div>
-            </Fade>
-        </div>
+            </Fade >
+        </div >
     );
 }
 
