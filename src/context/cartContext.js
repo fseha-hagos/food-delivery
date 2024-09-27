@@ -89,7 +89,7 @@ export const CartProvider = ({children})=>{
           return Promise.resolve();
       }
    
-     
+
     const deleteAllCartItems = async () => {
         setCarts(null);
         localStorage.setItem("carts", JSON.stringify(carts))
@@ -103,16 +103,18 @@ export const CartProvider = ({children})=>{
             return
         }
         else{
-        const itemExists = carts.findIndex((cart) => cart.menu_id === item.menu_id);
-        if(itemExists !== -1){
+
+            const itemExists = carts.findIndex((cart) => cart.menu_id === item.menu_id);
+            if(itemExists !== -1){
                 alert("you have ordered this item, pease go to your cart to edit your items..")
-        }
-       else{
-            const newCarts = [...carts , item]
-            localStorage.setItem("carts", JSON.stringify(newCarts))
-            setCarts(newCarts);
+            }
+            else{
+                const newCarts = [...carts , item]
+                localStorage.setItem("carts", JSON.stringify(newCarts))
+                setCarts(newCarts);
             }
         }
+
     
     }
 

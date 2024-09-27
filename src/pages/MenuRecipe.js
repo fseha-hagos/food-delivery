@@ -57,7 +57,7 @@ function MenuRecipe() {
   const getCatagoryItems = async () => {
     try {
       let response = fetch(
-        BACKEND_BASE_URL + "/catagory");
+      BACKEND_BASE_URL + "/catagory");
 
       // FetchRes is the promise to resolve
       // it by using.then() method

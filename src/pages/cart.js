@@ -1,4 +1,6 @@
+
 import React, { useContext, useState, useEffect } from 'react';
+
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import { Fade } from 'react-reveal';
@@ -31,6 +33,26 @@ const swal = require('sweetalert2')
         calculateTotal,
         deleteAllCartItems} = useCartAuth();
 
+
+    
+
+    const [ispayed, setIsPayed] = useState(true);
+    const [orderId, setOrderId] = useState(null); //temporary not used
+    const [isOrderSaved , setIsOrderSaved] = useState(true); //temporary not used
+    const [isPaymentVarified, setIsPaymentVarified] = useState(true); //temporary not used
+    const [isLoading, setIsLoading] = useState(false);
+    
+    const navigation = useNavigate();
+
+    const {user } = useContext(AuthContext);
+    const {carts,  handleQuantityChange,
+        handleRemoveItem,
+        calculateItemTotal,
+        calculateSubtotal,
+        calculateTax,
+        calculateTotal,
+        deleteAllCartItems} = useCartAuth();
+    
     const [darkMode, setDarkMode] = useState(false);
   
 const itemCount= carts.length;
@@ -65,6 +87,7 @@ const itemCount= carts.length;
     // const calculateTotal = () => {
     //     return calculateSubtotal() + calculateTax();
     // };
+
 
 
     const onCheckoutButtonClicked = () => {
@@ -128,8 +151,10 @@ const itemCount= carts.length;
     }
 
 
+
     const addOrder =  async (user_id,delivery_address,total_ammount,order_status="pending") => {
         const response = await fetch(BACKEND_BASE_URL+"/order", {
+
             method: "POST",
             headers:{
                 "Content-Type":"application/json"
@@ -178,6 +203,7 @@ const itemCount= carts.length;
 
         })
         const data = await response.json()
+
 
         if(response.status === 200){
             console.log("order items confirmed");
@@ -258,6 +284,7 @@ const itemCount= carts.length;
                 </Fade>
                 <div className='block md:flex '>
                     <Fade left delay={400}>
+
                         <ul className="list-none bg-amber-200 dark:bg-slate-800 w-3/4  ">
                             {carts? carts.map(item => (
                                 <li key={item.menu_id}>
@@ -265,6 +292,7 @@ const itemCount= carts.length;
                                         <div className="flex  mt-5 text-slate-800 dark:text-slate-200   ">
                                             <img src={BACKEND_BASE_URL +item.image} alt={item.item_name} className="w-[150px] h-[150px] rounded-full" />
                                             <div className='mx-5'>
+
                                                 <h2 className="text-lg mb-3 " >{item.item_name} </h2>
                                                 <p className='pr-5'>descriptions</p>
                                             </div>
@@ -282,8 +310,10 @@ const itemCount= carts.length;
                                                 <div>{calculateItemTotal(item).toFixed(2)} birr</div>
                                                 <div className='text-sm text-slate-400 mb-5'>total price</div>
                                                 <button onClick={() => handleRemoveItem(item.menu_id)}
-                                                    className="bg-violet-700 hover:bg-violet-900  text-slate-100 font-bold mb-5 py-2 px-4 rounded"
-                                                >
+
+                                                    className="bg-violet-700 hover:bg-violet-900  text-slate-100 font-bold mb-5 py-2 px-4 rounded">
+
+                                                
                                                     Remove
                                                 </button>
                                             </div>
@@ -304,7 +334,10 @@ const itemCount= carts.length;
                                 <p>Tax:<span className='float-right' >{calculateTax().toFixed(2)} birr</span></p>
                                 <hr />
                                 <p>Total:<span className='float-right' >{calculateTotal().toFixed(2)} birr</span></p>
+
                                 <button onClick={() => onCheckoutButtonClicked()}className="bg-amber-500 float-right hover:bg-amber-600 text-white font-bold px-5 py-2 my-3 rounded-full">
+
+      
                                     Checkout
                                 </button>
                             </Fade>
@@ -321,3 +354,156 @@ const itemCount= carts.length;
 };
 
 export default Cart;
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState } from 'react';
+// import Navbar from './components/navbar';
+// import Footer from './components/footer';
+// import foodImage from './assets/image-2.jpg';
+// import { Fade } from 'react-reveal';
+// import { useCartAuth } from '../context/cartContext';
+
+// function Cart() {
+//     const [cartItems, setCartItems] = useState([
+//         {
+//             id: 1,
+//             name: 'Especial pizza',
+//             price: 10.99,
+//             quantity: 1,
+//             image: { foodImage },
+//             description: " but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look ",
+//         },
+//         {
+//             id: 2,
+//             name: 'Especial burger',
+//             price: 15.99,
+//             quantity: 1,
+//             image: { foodImage },
+//             description: " but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look ",
+//         },
+//         {
+//             id: 3,
+//             name: 'Especial chicken burger',
+//             price: 20.99,
+//             quantity: 1,
+//             image: { foodImage },
+//             description: " but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look ",
+//         },
+//     ]);
+
+//      const {carts, onCartOrderConfirmed} = useCartAuth();
+    
+//     const [darkMode, setDarkMode] = useState(false);
+
+//     const handleQuantityChange = (id, quantity) => {
+//         setCartItems(
+//             cartItems.map(item => {
+//                 if (item.id === id) {
+//                     return { ...item, quantity };
+//                 }
+//                 return item;
+//             }),
+//         );
+//     };
+
+//     const handleRemoveItem = id => {
+//         setCartItems(cartItems.filter(item => item.id !== id));
+//     };
+
+//     const calculateItemTotal = (item) => {
+//         return item.price * item.quantity;
+//     };
+
+//     const calculateSubtotal = () => {
+//         return cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+//     };
+
+//     const calculateTax = () => {
+//         return calculateSubtotal() * 0.1;
+//     };
+
+//     const calculateTotal = () => {
+//         return calculateSubtotal() + calculateTax();
+//     };
+
+//     return (
+//         <div className='bg-slate-900 '>
+//             <Navbar />
+//             <div className='flex flex-col px-4 md:px-8 lg:px-12 md:mx-[5%]'>
+//                 <Fade up delay={300}>
+//                     <h1 className="text-2xl font-bold mt-3 mb-2 text-amber-500" > Shopping Cart</h1>
+//                     <div className=' text-slate-200 mb-5 '> your cart has items </div>
+//                 </Fade>
+//                 <div className='block md:flex '>
+//                     <Fade left delay={400}>
+//                         <ul className="list-none bg-slate-800 w-3/4  ">
+//                             {cartItems.map(item => (
+//                                 <li key={item.id}>
+//                                     <Fade up delay={600}>
+//                                         <div className="flex  mt-5  text-slate-200  ">
+//                                             <img src={item.image} alt={item.name} className="w-1/3 h-12" />
+//                                             <div className='mx-3'>
+//                                                 <h2 className="text-lg mb-3 " >{item.name} </h2>
+//                                                 <p className='pr-5'>{item.description}</p>
+//                                             </div>
+//                                             <div className='mx-3'>
+//                                                 <div>Qty:</div>
+//                                                 <hr />
+//                                                 <input type="number" value={item.quantity} onChange={e => handleQuantityChange(item.id, e.target.value)}
+//                                                     className="w-12 pl-2 text-sm bg-transparent"
+//                                                 />
+//                                             </div>
+//                                             <div className='mx-3'>
+//                                                 <div>{item.price} birr</div>
+//                                                 <div className='text-sm text-slate-400 mb-2'>price per one</div>
+//                                                 <div>{calculateItemTotal(item).toFixed(2)} birr</div>
+//                                                 <div className='text-sm text-slate-400 mb-5'>total price</div>
+//                                                 <button onClick={() => handleRemoveItem(item.id)}
+//                                                     className="bg-violet-700 hover:bg-rose-700  text-slate-100 font-bold mb-5 py-2 px-4 rounded"
+//                                                 >
+//                                                     Remove
+//                                                 </button>
+//                                             </div>
+//                                         </div>
+//                                     </Fade>
+//                                     <hr />
+//                                 </li>
+//                             ))}
+//                         </ul>
+//                     </Fade>
+//                     <Fade right delay={500}>
+//                         <div className="w-1/3 h-1/2  mx-1 p-5 bg-slate-800 text-slate-200" >
+//                             <Fade up delay={600}>
+//                                 <h2 className="text-lg mb-3 ">Cart Summary</h2>
+//                                 <p>Subtotal:<span className='float-right' >{calculateSubtotal().toFixed(2)} birr</span></p>
+//                                 <p>Tax:<span className='float-right' >{calculateTax().toFixed(2)} birr</span></p>
+//                                 <hr />
+//                                 <p>Total:<span className='float-right' >{calculateTotal().toFixed(2)} birr</span></p>
+//                                 <button className="bg-amber-500 float-right hover:bg-orange-700 text-white font-bold px-5 py-2 my-3 rounded-full">
+//                                     Checkout
+//                                 </button>
+//                             </Fade>
+//                         </div>
+//                     </Fade>
+
+//                 </div>
+//             </div >
+//             <Footer />
+//         </div >
+
+
+//     );
+// };
+
+// export default Cart;
+

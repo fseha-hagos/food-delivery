@@ -9,8 +9,10 @@ import RecipeDetail from './pages/RecipeDetail';
 import SignUp from './pages/SignUp';
 import Cart from './pages/cart';
 import { CartProvider } from './context/cartContext'
+
 import { ThemeProvider } from './context/ThemeContext';
 import MyCartPage from './pages/MyCartPage';
+
 
 import Login from './pages/Login';
 import Contact from './pages/components/contact';
@@ -18,6 +20,7 @@ import Contact from './pages/components/contact';
 function App() {
 
     return (
+
         <ThemeProvider>
             <Router>
 
@@ -61,6 +64,7 @@ function App() {
 
             </Router>
         </ThemeProvider>
+
 
     )
 }

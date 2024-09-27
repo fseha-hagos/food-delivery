@@ -4,8 +4,10 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Fade } from 'react-reveal';
 import Login from './login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { faShoppingCart, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import  {ThemeProvider, useTheme}  from '../../context/ThemeContext';
+
 import AuthContext from '../../context/AuthContext';
 
 
@@ -95,7 +97,9 @@ const AuthButtons = () => {
   };
 
   return (
-    <div className="flex items-center ">
+    <div className="flex items-center">
+     
+       
       <div className="relative my-1 mx-3 flex items-center ">
         <input
           type="text"

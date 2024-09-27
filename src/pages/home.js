@@ -9,7 +9,9 @@ import { useContext, useEffect, useState } from 'react';
 import { BACKEND_BASE_URL } from '../context/constants';
 import homeImage from './assets/home-1.png';
 import foodImage from './assets/image-2.jpg';
+
 import image from './assets/web.tif';
+
 import AuthContext from '../context/AuthContext';
 
 import SignUp from './SignUp';
@@ -75,6 +77,11 @@ function Home() {
                 humour, or randomised words which don't look even slightly believable.
               </p>
               <div className='flex'>
+
+             
+              
+
+
                 <a href="/menu" >
                   <button className='transition-transform duration-300 hover:scale-110 text-amber-600 dark:text-amber-500 border-2 border-amber-500 mt-4 py-1 px-4  rounded-full text-lg hover:text-white dark:hover:text-slate-900 hover:bg-amber-500 '>Order Now</button>
                 </a>
@@ -85,6 +92,7 @@ function Home() {
                 </a>
                 }
               </div>
+
             </div>
           </Fade>
           <Fade right delay={100}>
@@ -141,6 +149,7 @@ function Home() {
                 <a href='/SignUp'>
                   <button className='transition-transform duration-300 hover:scale-110 text-amber-600 dark:text-amber-500 border-2 border-amber-500 mt-3 py-2 px-5 rounded-3xl text-xl hover:text-white dark:hover:text-slate-900 hover:bg-amber-500 mt-5'>Get Started</button>
                 </a>
+
               </Fade>
 
             </div>
