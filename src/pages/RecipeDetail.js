@@ -75,7 +75,7 @@ const RecipeDetail = (  ) => {
     navigation("/cart");
   }
   return (
-    <div className="bg-custom_background dark:bg-slate-900">
+    <div className='relative bg-amber-50 dark:bg-slate-900'>
       <span className='bg-triangle'></span>
       <Navbar />
         <div className='md:flex sm:block justify-center mt-10'>

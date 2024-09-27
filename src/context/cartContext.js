@@ -103,6 +103,7 @@ export const CartProvider = ({children})=>{
             return
         }
         else{
+
             const itemExists = carts.findIndex((cart) => cart.menu_id === item.menu_id);
             if(itemExists !== -1){
                 alert("you have ordered this item, pease go to your cart to edit your items..")
@@ -113,6 +114,7 @@ export const CartProvider = ({children})=>{
                 setCarts(newCarts);
             }
         }
+
     
     }
 

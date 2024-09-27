@@ -4,9 +4,23 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Fade } from 'react-reveal';
 import Login from './login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+import { faShoppingCart, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import  {ThemeProvider, useTheme}  from '../../context/ThemeContext';
+
 import AuthContext from '../../context/AuthContext';
 
+
+const ThemeToggle = () => {
+  const { theme, toggleTheme } = useTheme();
+  
+  return (
+    <button onClick={toggleTheme} aria-label="Toggle theme" className='text-amber-800 dark:text-amber-300 text-xl h-[25%] px-1 border-2 border-amber-700 dark:border-amber-300 rounded '>
+      <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} />
+    </button>
+    
+  );
+};
 
 const Navbar = () => {
 
@@ -22,13 +36,14 @@ const Navbar = () => {
     setSearchOpen(prev => !prev);
     if (menuOpen) setMenuOpen(false);
   };
-
   return (
     <Fade down>
-      <nav className="bg-slate-200 border-slate-200 dark:bg-slate-950">
+      <ThemeProvider >
+      <nav className="bg-amber-200 border-slate-200 dark:bg-slate-950">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2">
           <Logo />
           <div className="flex md:order-2">
+          <ThemeToggle />
             <AuthButtons />
             <ToggleButton onClick={handleSearchToggle} isOpen={searchOpen} icon="search" ariaControls="search-input" ariaExpanded={searchOpen} />
             <ToggleButton onClick={handleMenuToggle} isOpen={menuOpen} icon="menu" ariaControls="navbar-menu" ariaExpanded={menuOpen} />
@@ -37,6 +52,7 @@ const Navbar = () => {
           <Menu isOpen={menuOpen} />
         </div>
       </nav>
+      </ThemeProvider>
     </Fade>
   );
 };
@@ -45,7 +61,7 @@ const Logo = () => (
   <Fade left>
     <a href="/home" className="flex items-center space-x-3 rtl:space-x-reverse no-underline">
       <img src={logo} className="h-7" alt="Royal Delivery Logo" />
-      <span className="self-center text-xl font-semibold whitespace-nowrap text-amber-500 dark:text-amber-200 hover:text-slate-900 dark:hover:text-amber-500">
+      <span className="self-center text-xl font-semibold whitespace-nowrap text-amber-600 dark:text-amber-200 hover:text-slate-900 dark:hover:text-amber-600">
         Royal Delivery
       </span>
     </a>
@@ -88,12 +104,12 @@ const AuthButtons = () => {
         <input
           type="text"
           id="search-input"
-          className="block w-full pl-2 pr-10 py-2 ps-30 text-sm text-slate-700 rounded-full bg-slate-200 dark:bg-slate-700 dark:text-slate-200 dark:placeholder-slate-200"
+          className="block w-full pl-2 pr-10 py-2 ps-30 text-sm text-slate-700 rounded-full bg-amber-50 dark:bg-slate-700 dark:text-slate-200 dark:placeholder-slate-200"
           placeholder=" Search..." />
         <div className='absolute flex items-center left-[80%] text-amber-300'>
           <NavLink to='/cart'
             className={({ isActive }) =>
-              `block no-underline   ${isActive ? 'text-amber-500' : 'text-slate-900 dark:text-amber-300'} bg-transparent hover:text-amber-500 transition duration-200 ease-in-out`
+              `block no-underline   ${isActive ? 'text-amber-700' : 'text-amber-500 dark:text-amber-300'} bg-transparent hover:text-amber-700 transition duration-200 ease-in-out`
             }>
             <FontAwesomeIcon icon={faShoppingCart} size='xl' />
           </NavLink>
@@ -131,7 +147,7 @@ const AuthButtons = () => {
 
 const Button = ({ onClick, label }) => (
   <button type="button" onClick={onClick}
-    className="text-slate-900 dark:text-amber-300 hover:text-black border-2 border-amber-300 hover:border-amber-600 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm mr-2 px-3 py-1 text-center dark:focus:ring-amber-800 transition duration-200 ease-in-out"
+    className="text-amber-800 dark:text-amber-300 dark:hover:text-black border-2 border-amber-800 dark:border-amber-300 hover:text-white hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm mr-2 px-3 py-1 text-center dark:focus:ring-amber-800 transition duration-200 ease-in-out"
   >
     {label}
   </button>
@@ -189,7 +205,7 @@ const Menu = ({ isOpen }) => (
     id="navbar-menu"
   >
 
-    <ul className="flex flex-col p-2 md:p-0 mt-2 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-slate-900 md:dark:bg-slate-900 dark:border-slate-700">
+    <ul className="flex flex-col p-2 md:p-0 mt-2 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-amber-50 dark:bg-slate-900 md:dark:bg-slate-900 dark:border-slate-700">
       {['Home', 'Menu', 'Order Online', 'About'].map((item, index) => (
         <li key={index}>
           <NavLink

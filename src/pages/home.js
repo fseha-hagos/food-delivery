@@ -10,80 +10,14 @@ import { BACKEND_BASE_URL } from '../context/constants';
 import homeImage from './assets/home-1.png';
 import foodImage from './assets/image-2.jpg';
 
+import image from './assets/web.tif';
+
 import AuthContext from '../context/AuthContext';
 
 import SignUp from './SignUp';
 import MenuRecipe from './MenuRecipe';
 import { Link } from 'react-router-dom';
 
-
-
-const products = [
-  {
-    "id": 1,
-    "href": "img",
-    "imageAlt": "products",
-    "imageSrc": require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
-    "name": "Especial Burger",
-    "price": 269.99
-  },
-  {
-    "id": 1,
-    "href": "img",
-    "imageAlt": "products",
-    "imageSrc": require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
-    "name": "Especial Burger",
-    "price": 269.99
-  },
-  {
-    "id": 1,
-    "href": "img",
-    "imageAlt": "products",
-    "imageSrc": require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
-    "name": "Especial Burger",
-    "price": 269.99
-  },
-  {
-    "id": 1,
-    "href": "img",
-    "imageAlt": "products",
-    "imageSrc": require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
-    "name": "Especial Burger",
-    "price": 269.99
-  },
-  {
-    "id": 1,
-    "href": "img",
-    "imageAlt": "products",
-    "imageSrc": require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
-    "name": "Especial Burger",
-    "price": 269.99
-  },
-  {
-    "id": 1,
-    "href": "img",
-    "imageAlt": "products",
-    "imageSrc": require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
-    "name": "Especial Burger",
-    "price": 269.99
-  },
-  {
-    "id": 1,
-    "href": "img",
-    "imageAlt": "products",
-    "imageSrc": require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
-    "name": "Especial Burger",
-    "price": 269.99
-  },
-  {
-    "id": 1,
-    "href": "img",
-    "imageAlt": "products",
-    "imageSrc": require('./assets/a5dcb73787322a8244171b9eea44b9bd-1.jpg'),
-    "name": "Especial Burger",
-    "price": 269.99
-  },
-]
 
 const FoodImage = ({ src }) => {
   return (
@@ -129,15 +63,13 @@ function Home() {
 
   }
   return (
-    <div className='relative bg-custom_background dark:bg-slate-900'>
-
-      <div className="w-full h-screen mx-auto bg-pinkSoft">
+    <div className='relative bg-amber-50 dark:bg-slate-900'>
+      <div className="w-full h-screen mx-auto ">
         <Navbar />
-
         <div className='sm:block md:flex '>
           <Fade up delay={100}>
             <div className='p-[5%]  w-1/2'>
-              <div className='text-slate-200 font-bold text-7xl '>From Our Kitchen</div>
+              <div className='text-slate-800 dark:text-slate-200 font-bold text-7xl '>From Our Kitchen</div>
               <div className='text-amber-500 font-bold text-6xl mb-[10%]'>to Your Table</div>
               <p className='text-left text-base  text-slate-900 dark:text-slate-300'>
                 There are many variations of passages of Lorem Ipsum available,
@@ -151,12 +83,12 @@ function Home() {
 
 
                 <a href="/menu" >
-                  <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-4 py-1 px-4  rounded-full text-lg hover:text-slate-900 hover:bg-amber-500 '>Order Now</button>
+                  <button className='transition-transform duration-300 hover:scale-110 text-amber-600 dark:text-amber-500 border-2 border-amber-500 mt-4 py-1 px-4  rounded-full text-lg hover:text-white dark:hover:text-slate-900 hover:bg-amber-500 '>Order Now</button>
                 </a>
                 {
                 user ? (<></>) :
                 <a href='/SignUp'>
-                  <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-4 py-1 px-4 ml-5  rounded-full text-lg hover:text-slate-900 hover:bg-amber-500 '>Sign Up</button>
+                  <button className='transition-transform duration-300 hover:scale-110 text-amber-600 dark:text-amber-500 border-2 border-amber-500 mt-4 py-1 px-4 ml-5  rounded-full text-lg hover:text-white dark:hover:text-slate-900 hover:bg-amber-500 '>Sign Up</button>
                 </a>
                 }
               </div>
@@ -165,7 +97,8 @@ function Home() {
           </Fade>
           <Fade right delay={100}>
             <div className='w-1/2 relative mr-[5%]' >
-              <img src={homeImage} alt="Chef" className='absolute opacity-75 w-[55%] top-5 right-[15%] transition-transform ' />
+            <img src={image} alt='paint' className='mt-[25%] ml-[10%]' />
+              <img src={homeImage} alt="Chef" className='absolute w-[55%] top-5 right-[15%] transition-transform ' />
               <div className='flex items-center'>
                 <a href='#' className='cursor-pointer '>
                   <img src={foodImage} alt="Food"
@@ -191,7 +124,7 @@ function Home() {
 
       <Fade up>
         <div className="flex items-center relative overflow-hidden my-[8%]">
-          <div className='bg-slate-800 w-[90%]  h-[500px]  mx-[2%]  lg:w-[70%]   overflow-hidden rounded-tl-[70px] rounded-br-[70px] float-left'>
+          <div className='bg-amber-100 dark:bg-slate-800 w-[90%]  h-[500px]  mx-[2%]  lg:w-[70%]   overflow-hidden rounded-tl-[70px] rounded-br-[70px] float-left'>
             <div className='md:w-[50%] lg:w-[75%]  mt-[36px] ml-[30px] md:ml-[5px] lg:ml-[30px]'>
               <Fade up>
                 <div className='text-amber-500 font-bold text-6xl text-left my-5 pt-3'>
@@ -214,7 +147,7 @@ function Home() {
                 
 
                 <a href='/SignUp'>
-                <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-3 py-2 px-5 rounded-3xl text-xl hover:text-slate-900 hover:bg-amber-500 mt-5'>Get Started</button>
+                  <button className='transition-transform duration-300 hover:scale-110 text-amber-600 dark:text-amber-500 border-2 border-amber-500 mt-3 py-2 px-5 rounded-3xl text-xl hover:text-white dark:hover:text-slate-900 hover:bg-amber-500 mt-5'>Get Started</button>
                 </a>
 
               </Fade>
@@ -251,7 +184,7 @@ function Home() {
           </div>
           <div className='flex items-center justify-center'>
             <a href='/menu'>
-            <button className='transition-transform duration-300 hover:scale-110 text-amber-500 border-2 border-amber-500 mt-3 py-2 px-5 rounded-full text-xl hover:text-slate-900 hover:bg-amber-500 mt-5'>Discover more!</button>
+              <button className='transition-transform duration-300 hover:scale-110 text-amber-600 dark:text-amber-500 border-2 border-amber-500 mt-3 py-2 px-5 rounded-full text-xl hover:text-white dark:hover:text-slate-900 hover:bg-amber-500 mt-5'>Discover more!</button>
             </a>
           </div>
         </div>
@@ -259,12 +192,8 @@ function Home() {
       <Fade up>
         <Contact />
       </Fade>
-        <Footer />
-
-
+      <Footer />
     </div>
-
-
   );
 }
 export default Home;

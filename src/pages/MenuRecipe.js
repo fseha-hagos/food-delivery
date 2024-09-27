@@ -13,19 +13,19 @@ import { BACKEND_BASE_URL } from '../context/constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-const menuItems = [
-  { text: 'All', className: 'menu-btn-all' },
-  { text: 'Appetizers', className: 'menu-btn-appetizers' },
-  { text: 'Salads', className: 'menu-btn-salads' },
-  { text: 'Main Courses', className: 'menu-btn-main-courses' },
-  { text: 'Pastas', className: 'menu-btn-pastas' },
-  { text: 'Pizza', className: 'menu-btn-pizza' },
-  { text: 'Burgers', className: 'menu-btn-burgers' },
-  { text: 'Our Special', className: 'menu-btn-our-special' },
-  { text: 'Desserts', className: 'menu-btn-desserts' },
-  { text: 'Beverages', className: 'menu-btn-beverages' },
-  { text: 'Alcoholic Beverages', className: 'menu-btn-alcoholic-beverages' }
-];
+// const menuItems = [
+//   { text: 'All', className: 'menu-btn-all' },
+//   { text: 'Appetizers', className: 'menu-btn-appetizers' },
+//   { text: 'Salads', className: 'menu-btn-salads' },
+//   { text: 'Main Courses', className: 'menu-btn-main-courses' },
+//   { text: 'Pastas', className: 'menu-btn-pastas' },
+//   { text: 'Pizza', className: 'menu-btn-pizza' },
+//   { text: 'Burgers', className: 'menu-btn-burgers' },
+//   { text: 'Our Special', className: 'menu-btn-our-special' },
+//   { text: 'Desserts', className: 'menu-btn-desserts' },
+//   { text: 'Beverages', className: 'menu-btn-beverages' },
+//   { text: 'Alcoholic Beverages', className: 'menu-btn-alcoholic-beverages' }
+// ];
 
 const MenuList = ({ catagoryLists }) => {
   return (
@@ -33,7 +33,7 @@ const MenuList = ({ catagoryLists }) => {
       {catagoryLists.map((item, index) => (
         <Link
           key={index}
-          className={`button text-amber-300 no-underline hover:text-amber-600 `}
+          className={`button text-amber-700 dark:text-amber-300 hover:text-slate-950 dark:hover:text-slate-200 no-underline `}
         >
           {item.catagory_name}
         </Link>
@@ -88,27 +88,9 @@ function MenuRecipe() {
       console.log("there was a server issue");
     }
   }
-  // const getLatestItems = async() => {
-  //   try {
-
-  //       let response = fetch(BACKEND_BASE_URL + "/menu");
-
-  //       response.then(
-  //         res => res.json()
-  //       ).then(
-  //         d => {
-  //           setLatestItems(d);
-  //           console.log("menus loaded succesfully");
-  //           console.log(d);}
-  //       );
-
-  //     }catch{
-  //       console.log("(MenuRecipe.js)===there is an error in quering menus")
-  //     }
-
-  // }
+  
   return (
-    <div className="bg bg-custom_background dark:bg-slate-900">
+    <div className='relative bg-amber-50 dark:bg-slate-900'>
       <Navbar />
       <div className='menu-header'>
         <div className='md:flex sm:block justify-center'>
@@ -123,7 +105,7 @@ function MenuRecipe() {
           </Fade>
         </div>
         <Fade up>
-        <h2 className='flex lg:w-1/2 text-amber-500 mb-5'>
+        <h2 className='flex lg:w-1/2 text-amber-700 dark:text-amber-500 mb-5'>
           <hr className=' border-white w-24 mx-2' />
           Our menu
           <hr className='menu-hr border-white w-24 mx-2' />
