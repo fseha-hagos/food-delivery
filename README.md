@@ -20,15 +20,14 @@ Welcome to the **Food Delivery App** repository! This project is a fully functio
   - Tailwind CSS (for styling)
   
 - **Backend**: 
-  - Node.js
-  - Express.js
+  - Django
   - MongoDB (for database)
   
 - **Authentication**: 
   - JWT (JSON Web Tokens)
   
 - **Payment Gateway**: 
-  - Stripe (or any other preferred payment gateway)
+  - Chapa (or any other preferred ethiopian payment gateway)
   
 - **Real-time Updates**: 
   - Socket.io
@@ -41,9 +40,9 @@ Welcome to the **Food Delivery App** repository! This project is a fully functio
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
+- Django
 - MongoDB (running locally or on a cloud service)
-- Stripe API key (for payment integration)
+- Chapa API key (for payment integration)
 
 ### Installation
 
@@ -100,11 +99,6 @@ food-delivery/
 │   ├── public/              # Static assets
 │   ├── src/                 # React components, Redux, etc.
 │   └── ...                  # Other frontend files
-├── server/                  # Backend code
-│   ├── controllers/         # Route controllers
-│   ├── models/              # MongoDB models
-│   ├── routes/              # API routes
-│   └── ...                  # Other backend files
 ├── .gitignore               # Git ignore file
 ├── README.md                # This file
 └── ...                      # Other project files
