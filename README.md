@@ -1,6 +1,6 @@
 # 🍔 Food Delivery App 🚚
 
-Welcome to the **Food Delivery App** repository! This project is a fully functional food delivery platform designed to provide users with a seamless experience for ordering food online. Whether you're a foodie or a developer, this project has something for everyone!
+Welcome to the **Food Delivery App** repository! This project is a responive frontend food delivery platform designed to provide users with a seamless experience for ordering food online. Whether you're a foodie or a developer, this project has something for everyone!
 
 ## 🌟 Features
 
@@ -19,13 +19,6 @@ Welcome to the **Food Delivery App** repository! This project is a fully functio
   - React.js
   - Tailwind CSS (for styling)
   
-- **Backend**: 
-  - Django
-  - MongoDB (for database)
-  
-- **Authentication**: 
-  - JWT (JSON Web Tokens)
-  
 - **Payment Gateway**: 
   - Chapa (or any other preferred ethiopian payment gateway)
   
@@ -38,11 +31,6 @@ Welcome to the **Food Delivery App** repository! This project is a fully functio
 
 ## 🚀 Getting Started
 
-### Prerequisites
-
-- Django
-- MongoDB (running locally or on a cloud service)
-- Chapa API key (for payment integration)
 
 ### Installation
 
